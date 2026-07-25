@@ -25,8 +25,6 @@ Vercel 会在你的 Git 服务账号下创建克隆仓库，之后每次向该�
 
 ## 手动导入 GitHub 仓库（备用）
 
-## 导入 GitHub 仓库
-
 1. 登录 [Vercel Dashboard](https://vercel.com/dashboard)。
 2. 点击 **Add New... → Project**。
 3. 在仓库列表中找到自己的 `Novora` 仓库。
