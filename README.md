@@ -14,7 +14,7 @@ npm run docs:dev
 ## 生产构建
 
 ```bash
-npm run docs:build
+npm run build
 ```
 
 构建结果位于 `.vitepress/dist`。如需本地检查构建结果：
@@ -22,6 +22,25 @@ npm run docs:build
 ```bash
 npm run docs:preview
 ```
+
+## 部署到 Vercel
+
+仓库已包含 `vercel.json`，会固定使用以下配置：
+
+```text
+Build Command: npm run build
+Output Directory: .vitepress/dist
+```
+
+将仓库导入 Vercel 后直接部署即可。如果旧项目部署成功后显示 Vercel 404，请执行：
+
+1. 把本仓库新增的 `vercel.json` 和 `package.json` 提交到 GitHub；
+2. 打开 Vercel 项目的 **Settings → Build and Deployment**；
+3. 确认 Output Directory 是 `.vitepress/dist`，不是 `dist`；
+4. 回到 **Deployments**，对最新提交执行 Redeploy；
+5. 重新部署时可取消使用旧 Build Cache。
+
+构建日志中的 `Ignored build scripts: esbuild` 警告不是此次 404 的原因；只要后续出现 `build complete` 和 `Deployment completed`，应继续检查发布输出目录。
 
 ## 导入现有 VitePress
 
