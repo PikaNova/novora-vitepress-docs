@@ -70,17 +70,74 @@ Deploy Hook 只有 Vercel 项目创建后才能生成。第一次 Deploy 是创�
 
 ## 创建 Deploy Hook（正式部署必做）
 
+### 第一步：确认生产分支
+
 1. 打开 Vercel 项目 **Settings → Git**。
-2. 找到 **Deploy Hooks**。
-3. Hook 名称填写 `Novora Update`。
-4. Branch 选择生产分支，通常是 `main`。
-5. 创建后复制完整 Hook URL，不要只复制名称。
-6. 打开 **Settings → Environment Variables**，新建 `VERCEL_DEPLOY_HOOK_URL`。
-7. Value 粘贴 Hook URL，勾选 **Production** 并保存。
-8. 回到 **Deployments**，对最新生产部署执行 **Redeploy**。
-9. 重新登录 Novora，进入“系统设置 → 版本与更新”，确认出现 **一键部署更新**。
+2. 在 Connected Git Repository 中确认连接的是实际部署 Novora 的仓库。
+3. 确认 Production Branch，通常为 `main`。
+
+Hook 只会重新构建这里连接的仓库和所选分支。若这里连接的是你的一键部署副本或 Fork，它不会自动修改该仓库中的代码。
+
+### 第二步：生成 Hook URL
+
+1. 继续在 **Settings → Git** 页面向下找到 **Deploy Hooks**。
+2. 在 Hook 名称中填写 `Novora Production Update`。
+3. Branch 选择上一步确认的 `main`，不要选择临时开发分支。
+4. 点击 **Create Hook**。
+5. 创建成功后复制以 `https://api.vercel.com/v1/integrations/deploy/` 开头的完整 URL。
+
+Vercel 控制台改版后，入口名称可能显示为 **Deploy Hooks** 或位于 Git 设置的同名区域，但填写原则不变：名称用于自己识别，Branch 必须是生产分支，最终需要复制完整 URL。
+
+::: danger 不要在浏览器中测试打开 Hook URL
+访问或请求该 URL 就可能触发生产部署。不要把它发到群聊、GitHub Issue、截图或客户端源码中。
+:::
+
+### 第三步：填写环境变量
+
+1. 打开项目 **Settings → Environment Variables**。
+2. 点击 **Add New**。
+3. Key 或 Name 完整填写 `VERCEL_DEPLOY_HOOK_URL`，注意全部大写。
+4. Value 粘贴刚才复制的完整 Hook URL，不加引号，不留首尾空格。
+5. Environment 至少勾选 **Production**。
+6. 点击 **Save**。
+
+Deploy Hook 是生产项目自身的更新入口。Preview 若确实需要独立更新，应创建指向测试分支的另一条 Hook，不要让测试环境共用生产 Hook。
+
+### 第四步：让变量生效
+
+1. 打开 **Deployments**。
+2. 找到当前最新的 Production Deployment。
+3. 打开右侧菜单，选择 **Redeploy**。
+4. 确认使用当前项目设置重新构建。
+5. 等待状态变为 **Ready**。
+
+环境变量只对新 Deployment 生效。只保存变量而不重新部署，旧 Functions 仍然读取不到钩子。
+
+### 第五步：在 Novora 中验证
+
+1. 使用超级管理员登录 Novora。
+2. 打开 **系统设置 → 版本与更新**。
+3. 确认没有“缺少 `VERCEL_DEPLOY_HOOK_URL`”警告。
+4. 确认页面出现 **一键部署更新**。
+5. 在没有考试的维护窗口点击一次。
+6. 立即回到 Vercel **Deployments**，确认出现新的部署记录并最终变为 **Ready**。
+7. 返回 Novora 检查首页、登录和数据读取。
 
 Deploy Hook 会重新拉取当前 Vercel 项目连接仓库的 `main` 分支并构建。它不会自动把官方 Novora 的新提交合并到另一个未同步的 Fork；使用 Fork 时应先在 GitHub 完成 Sync fork。
+
+测试 Hook 只需要确认 Vercel 出现一条新的部署记录。不要连续点击：一次成功请求就会创建一次构建任务。若 GitHub 在同步 `main` 后已经自动触发部署，可以直接等待该部署完成，无需再点一键部署。
+
+## Deploy Hook 维护与轮换
+
+出现泄露、误触发或需要更换分支时：
+
+1. 在 **Settings → Git → Deploy Hooks** 删除旧 Hook；
+2. 创建指向正确生产分支的新 Hook；
+3. 用新 URL 覆盖 `VERCEL_DEPLOY_HOOK_URL`；
+4. 重新部署使新值生效；
+5. 在 Novora 中执行一次维护窗口测试。
+
+若按钮不出现，依次检查：变量名是否拼写正确、是否勾选 Production、添加变量后是否 Redeploy、当前账号是否有 `deployment.trigger` 权限。若点击后提示 `NO_HOOK`，说明当前运行中的 Functions 仍未读到变量；若 Vercel 返回非 2xx 状态，优先检查 Hook 是否被删除、分支是否仍存在，以及 URL 是否粘贴完整。
 
 ## 环境选择
 

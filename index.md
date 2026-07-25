@@ -55,6 +55,8 @@ Hook 只有 Vercel 项目创建后才能生成，所以需要在首次部署后�
 
 部署完成后，从[功能总览](/features/01-feature-overview)开始学习六个管理模块，也可以直接查看[创建大型考试](/features/08-create-major-exam)或[创建周测](/features/09-create-weekly-test)。已有部署出现问题时，进入[故障排查](/appendix/a-troubleshooting)。
 
+已经完成首次部署的管理员，可直接阅读[创建 Vercel Deploy Hook](/guide/07-environment#创建-deploy-hook正式部署必做)和[后续版本完整更新流程](/guide/12-maintenance)。
+
 ::: warning 中国大陆访问说明
 Vercel 分配的 `*.vercel.app` 地址在中国大陆可能无法访问或不稳定。本文会在首次初始化前指导你绑定自定义域名。自定义域名只能改善入口可用性，不能把 Vercel 节点变成中国大陆节点，也不能保证所有运营商线路稳定。
 :::
