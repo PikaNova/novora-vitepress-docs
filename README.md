@@ -2,6 +2,8 @@
 
 这是一套可独立运行的 VitePress 文档站，包含 12 篇部署文档、10 篇功能使用文档和 6 篇附录，内容以 Novora V2.5.6 正式版为基准。
 
+文档地址 <https://docs.pikachu2026.space>
+
 **官方问题反馈与部署交流群：`1067566386`**
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD)
