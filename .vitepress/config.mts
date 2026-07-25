@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
-  description: '面向零基础用户的 Novora 部署、初始化与维护指南',
+  description: 'Novora V2.5.4 从零部署、功能使用与维护指南',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -21,6 +21,7 @@ export default defineConfig({
     darkModeSwitchLabel: '外观',
     nav: [
       { text: '从零部署', link: '/guide/01-introduction' },
+      { text: '功能使用', link: '/features/01-feature-overview' },
       { text: '故障排查', link: '/appendix/a-troubleshooting' },
       { text: '项目仓库', link: 'https://github.com/PikaNova/Novora' }
     ],
@@ -44,6 +45,22 @@ export default defineConfig({
         ]
       },
       {
+        text: '功能使用',
+        collapsed: false,
+        items: [
+          { text: '功能总览', link: '/features/01-feature-overview' },
+          { text: '1. 运行总览', link: '/features/02-overview-module' },
+          { text: '2. 大型考试', link: '/features/03-major-module' },
+          { text: '3. 周测计划', link: '/features/04-weekly-module' },
+          { text: '4. 年级与班级', link: '/features/05-classes-module' },
+          { text: '5. 设备管理', link: '/features/06-devices-module' },
+          { text: '6. 用户与权限', link: '/features/07-users-module' },
+          { text: '创建一场大型考试', link: '/features/08-create-major-exam' },
+          { text: '创建一场周测', link: '/features/09-create-weekly-test' },
+          { text: '其他功能', link: '/features/10-other-features' }
+        ]
+      },
+      {
         text: '附录',
         collapsed: false,
         items: [
@@ -60,7 +77,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.4.1 整理'
+      copyright: '内容基于 Novora V2.5.4 整理'
     },
     search: { provider: 'local' }
   }
