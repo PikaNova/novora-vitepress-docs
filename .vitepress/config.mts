@@ -20,12 +20,22 @@ export default defineConfig({
     sidebarMenuLabel: '目录',
     darkModeSwitchLabel: '外观',
     nav: [
+      { text: '效果预览', link: '/effect/01-index' },
       { text: '从零部署', link: '/guide/01-introduction' },
       { text: '功能使用', link: '/features/01-feature-overview' },
       { text: '故障排查', link: '/appendix/a-troubleshooting' },
       { text: '项目仓库', link: 'https://github.com/PikaNova/Novora' }
     ],
     sidebar: [
+      {
+        text: '项目效果预览',
+        collapsed: false,
+        items: [
+          { text: '1. 首页', link: '/effect/01-index' },
+          { text: '2. 大屏', link: '/effect/02-screen' },
+          { text: '3. 后台管理', link: '/effect/03-admin' },
+        ]
+      },
       {
         text: '部署主线',
         collapsed: false,
