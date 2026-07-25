@@ -4,7 +4,8 @@
 
 ## 方法一：一键部署自动克隆（推荐）
 
-打开 [PikaNova/Novora](https://github.com/PikaNova/Novora)，在 README 顶部找到“一键部署”：
+打开 [PikaNova/Novora](https://github.com/PikaNova/Novora)，在 README 顶部找到“一键部署”
+或直接点击下方部署按钮：
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD,ADMIN_RECOVERY_KEY&envDescription=请填写%20Neon%20PostgreSQL%20连接字符串、超级管理员初始密码和应急恢复密钥)
 
