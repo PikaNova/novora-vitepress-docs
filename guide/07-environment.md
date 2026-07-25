@@ -28,11 +28,23 @@
 初始管理员创建后，密码以加盐哈希保存在 Neon。重新部署或修改 `ADMIN_PASSWORD` 不会覆盖数据库中已有的管理员密码。日常改密应在“用户与权限”中完成。
 :::
 
+### ADMIN_RECOVERY_KEY（强烈建议）
+
+| 项目 | 内容 |
+| --- | --- |
+| Name | `ADMIN_RECOVERY_KEY` |
+| Value | 与管理员密码不同的随机长字符串，至少 16 位 |
+| Environment | Production；Preview 使用独立测试密钥 |
+
+当所有超级管理员都忘记密码时，可在登录页使用恢复入口和此密钥恢复超级管理员账号。恢复密钥不经过邮件或短信发送，不能写入仓库、文档截图或普通管理员操作手册。
+
+恢复完成后建议在 Vercel 中更换该值并重新部署。它属于应急密钥，不应用作日常登录密码。
+
 ## 推荐的可选变量
 
 | 变量 | 何时填写 | 示例或说明 |
 | --- | --- | --- |
-| `GITHUB_REPO` | 使用自己的更新仓库时 | `owner/Novora`，不要带 GitHub URL |
+| `GITHUB_REPO` | 使用自己的更新仓库时 | `owner/Novora` 或完整 GitHub 仓库地址 |
 | `GITHUB_TOKEN` | 私有仓库或 GitHub API 限额不足时 | GitHub 访问令牌，按最小权限创建 |
 | `VERCEL_DEPLOY_HOOK_URL` | 需要后台“一键重新部署”时 | Vercel Deploy Hook 的完整私密 URL |
 | `ASSET_CDN_BASE` | 已正确配置独立静态资源 CDN 时 | 如 `https://cdn.example.com/`；普通部署留空 |
@@ -87,6 +99,7 @@ Vercel 通常提供三类环境：
 
 - [ ] `DATABASE_URL` 使用 Neon Pooled 连接串
 - [ ] `ADMIN_PASSWORD` 至少 8 位且没有泄露
+- [ ] `ADMIN_RECOVERY_KEY` 至少 16 位，且不同于管理员密码
 - [ ] 变量名完全使用大写和下划线
 - [ ] Value 没有额外引号或换行
 - [ ] Production 环境已勾选
