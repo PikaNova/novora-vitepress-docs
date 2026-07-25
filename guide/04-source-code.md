@@ -7,20 +7,20 @@
 打开 [PikaNova/Novora](https://github.com/PikaNova/Novora)，在 README 顶部找到“一键部署”
 或直接点击下方部署按钮：
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD,ADMIN_RECOVERY_KEY&envDescription=请填写%20Neon%20PostgreSQL%20连接字符串、超级管理员初始密码和应急恢复密钥)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD&envDescription=请填写%20Neon%20连接字符串和超级管理员初始密码)
 
 该按钮会自动：
 
 - 从官方仓库克隆当前源码；
 - 在你的 Git 服务账号下创建 `novora-board` 仓库；
 - 创建同名 Vercel 项目；
-- 要求填写 `DATABASE_URL`、`ADMIN_PASSWORD` 和 `ADMIN_RECOVERY_KEY`；
+- 首次要求填写 `DATABASE_URL` 和 `ADMIN_PASSWORD`；
 - 使用仓库中的 Vite 和 `vercel.json` 配置执行部署。
 
 此时先不要点击按钮。完成下一章的 Neon 数据库创建并取得 Pooled connection string 后，再按[配置 Vercel 项目](/guide/06-vercel)执行一键部署。
 
 ::: warning 一键部署不等于自动准备数据库
-按钮不会替你创建 Neon 项目，也不会生成管理员密码或恢复密钥。三个值仍需由部署者提前准备并妥善保管。
+按钮不会替你创建 Neon 项目、管理员密码或 Deploy Hook。Deploy Hook 只有项目创建后才能生成，必须在首次部署后补充；恢复密钥则由 Novora 在首次初始化结束时自动生成并只显示一次。
 :::
 
 ## 方法二：手动 Fork 仓库

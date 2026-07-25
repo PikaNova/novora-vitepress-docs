@@ -2,7 +2,7 @@
 
 环境变量是在 Vercel 中保存的部署配置。敏感值不会出现在浏览器源码中，也不应写入 GitHub。
 
-使用 README 的一键部署按钮时，Vercel 会在部署前一次要求填写 `DATABASE_URL`、`ADMIN_PASSWORD` 和 `ADMIN_RECOVERY_KEY`。
+使用 README 的一键部署按钮时，Vercel 首次要求填写 `DATABASE_URL` 和 `ADMIN_PASSWORD`。项目创建后还必须生成 Deploy Hook，并补充 `VERCEL_DEPLOY_HOOK_URL`。
 
 ## 必填变量
 
@@ -30,17 +30,19 @@
 初始管理员创建后，密码以加盐哈希保存在 Neon。重新部署或修改 `ADMIN_PASSWORD` 不会覆盖数据库中已有的管理员密码。日常改密应在“用户与权限”中完成。
 :::
 
-### ADMIN_RECOVERY_KEY
+### VERCEL_DEPLOY_HOOK_URL
 
 | 项目 | 内容 |
 | --- | --- |
-| Name | `ADMIN_RECOVERY_KEY` |
-| Value | 与管理员密码不同的随机长字符串，至少 16 位 |
-| Environment | Production；Preview 使用独立测试密钥 |
+| Name | `VERCEL_DEPLOY_HOOK_URL` |
+| Value | Vercel 为当前项目 `main` 分支生成的完整 Deploy Hook URL |
+| Environment | Production |
 
-当所有超级管理员都忘记密码时，可在登录页使用恢复入口和此密钥恢复超级管理员账号。恢复密钥不经过邮件或短信发送，不能写入仓库、文档截图或普通管理员操作手册。
+该钩子用于后台“版本与更新 → 一键部署更新”。Hook URL 能触发生产部署，应像密码一样保管，不能写入 GitHub 或公开截图。
 
-恢复完成后建议在 Vercel 中更换该值并重新部署。它属于应急密钥，不应用作日常登录密码。
+::: warning 为什么不能在一键部署第一屏填写
+Deploy Hook 只有 Vercel 项目创建后才能生成。第一次 Deploy 是创建项目的引导步骤；生成钩子、添加变量并 Redeploy 后，正式配置才完整。
+:::
 
 ## 推荐的可选变量
 
@@ -48,7 +50,6 @@
 | --- | --- | --- |
 | `GITHUB_REPO` | 使用自己的更新仓库时 | `owner/Novora` 或完整 GitHub 仓库地址 |
 | `GITHUB_TOKEN` | 私有仓库或 GitHub API 限额不足时 | GitHub 访问令牌，按最小权限创建 |
-| `VERCEL_DEPLOY_HOOK_URL` | 需要后台“一键重新部署”时 | Vercel Deploy Hook 的完整私密 URL |
 | `ASSET_CDN_BASE` | 已正确配置独立静态资源 CDN 时 | 如 `https://cdn.example.com/`；普通部署留空 |
 
 `ASSET_CDN_BASE` 配错会导致 JS 或 CSS 无法加载，零基础部署不要填写。
@@ -67,16 +68,19 @@
 
 不部署自有遥测后台时不要随意填写。系统内可查看遥测说明和同意状态；遥测开启后会上传实例版本、运行环境、匿名实例标识、省份和完整校名，不上传考试正文、管理员密码或登录会话。
 
-## 创建 Deploy Hook（可选）
+## 创建 Deploy Hook（正式部署必做）
 
 1. 打开 Vercel 项目 **Settings → Git**。
 2. 找到 **Deploy Hooks**。
 3. Hook 名称填写 `Novora Update`。
 4. Branch 选择生产分支，通常是 `main`。
-5. 创建后复制 Hook URL。
-6. 把 URL 保存为 `VERCEL_DEPLOY_HOOK_URL`。
+5. 创建后复制完整 Hook URL，不要只复制名称。
+6. 打开 **Settings → Environment Variables**，新建 `VERCEL_DEPLOY_HOOK_URL`。
+7. Value 粘贴 Hook URL，勾选 **Production** 并保存。
+8. 回到 **Deployments**，对最新生产部署执行 **Redeploy**。
+9. 重新登录 Novora，进入“系统设置 → 版本与更新”，确认出现 **一键部署更新**。
 
-Deploy Hook URL 能触发生产部署，应当像密码一样保管。
+Deploy Hook 会重新拉取当前 Vercel 项目连接仓库的 `main` 分支并构建。它不会自动把官方 Novora 的新提交合并到另一个未同步的 Fork；使用 Fork 时应先在 GitHub 完成 Sync fork。
 
 ## 环境选择
 
@@ -103,7 +107,7 @@ Vercel 通常提供三类环境：
 
 - [ ] `DATABASE_URL` 使用 Neon Pooled 连接串
 - [ ] `ADMIN_PASSWORD` 至少 8 位且没有泄露
-- [ ] `ADMIN_RECOVERY_KEY` 至少 16 位，且不同于管理员密码
+- [ ] 已创建指向 `main` 的 Deploy Hook，并填写 `VERCEL_DEPLOY_HOOK_URL`
 - [ ] 变量名完全使用大写和下划线
 - [ ] Value 没有额外引号或换行
 - [ ] Production 环境已勾选

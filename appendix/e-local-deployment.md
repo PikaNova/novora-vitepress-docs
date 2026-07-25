@@ -95,7 +95,7 @@ novora-local-test
 ```dotenv
 DATABASE_URL=粘贴本地测试数据库的完整Pooled连接串
 ADMIN_PASSWORD=填写至少12位的本地测试管理员密码
-ADMIN_RECOVERY_KEY=填写至少16位且不同于管理员密码的本地测试恢复密钥
+VERCEL_DEPLOY_HOOK_URL=填写测试项目main分支的VercelDeployHook地址
 ```
 
 注意：
@@ -106,7 +106,7 @@ ADMIN_RECOVERY_KEY=填写至少16位且不同于管理员密码的本地测试�
 - 不要提交 `.env.local` 到 GitHub；
 - 不要使用生产管理员密码。
 
-可按需继续添加 `GITHUB_REPO` 等可选变量。数据库和初始密码是运行必需项；恢复密钥用于 v2.5.4 超级管理员应急恢复，建议测试环境也配置独立值。
+可按需继续添加 `GITHUB_REPO` 等变量。数据库和初始密码是首次运行必需项；恢复密钥会在初始化结束时自动生成。若本地环境只做短期功能调试，可暂不触发 Deploy Hook，但正式验收仍应验证该变量。
 
 ## 7. 安装并登录 Vercel CLI
 
@@ -162,7 +162,7 @@ http://localhost:3000/api/time
 3. 点击“开始初始化”；
 4. 使用 `admin` 和 `.env.local` 中的 `ADMIN_PASSWORD` 登录；
 5. 创建测试学校、年级和班级；
-6. 打开使用文档并阅读至少 10 秒；
+6. 可查看使用文档；弹窗被阻止时直接继续，稍后从系统公告手动获取；
 7. 设置新的超级管理员密码并重新登录；
 8. 返回首页选择当前设备班级；
 9. 创建测试考试并刷新确认数据仍存在。

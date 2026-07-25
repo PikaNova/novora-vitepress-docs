@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
-  description: 'Novora V2.5.4 从零部署、功能使用与维护指南',
+  description: 'Novora V2.5.5 从零部署、功能使用与维护指南',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -68,7 +68,8 @@ export default defineConfig({
           { text: 'B. 本地开发', link: '/appendix/b-local-development' },
           { text: 'C. ClassIsland 插件', link: '/appendix/c-classisland' },
           { text: 'D. 作者遥测后台', link: '/appendix/d-telemetry' },
-          { text: 'E. 本地部署', link: '/appendix/e-local-deployment' }
+          { text: 'E. 本地部署', link: '/appendix/e-local-deployment' },
+          { text: 'F. Functions 迁移到新加坡', link: '/appendix/f-singapore-functions' }
         ]
       }
     ],
@@ -77,7 +78,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.5.4 整理'
+      copyright: '内容基于 Novora V2.5.5 整理'
     },
     search: { provider: 'local' }
   }

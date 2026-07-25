@@ -1,6 +1,12 @@
 # Novora VitePress 文档
 
-这是一套可独立运行的 VitePress 文档站，包含 12 篇部署文档、10 篇功能使用文档和 5 篇附录，内容以 Novora V2.5.4 正式版为基准。
+这是一套可独立运行的 VitePress 文档站，包含 12 篇部署文档、10 篇功能使用文档和 6 篇附录，内容以 Novora V2.5.5 正式版为基准。
+
+**官方问题反馈与部署交流群：`1067566386`**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD)
+
+简易流程：创建 Neon 新加坡数据库 → 一键部署 → 创建 `main` Deploy Hook 并填写 `VERCEL_DEPLOY_HOOK_URL` → Redeploy → 从首页初始化并保存自动恢复密钥。完整步骤从文档首页进入。
 
 ## 本地运行
 
