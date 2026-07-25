@@ -2,6 +2,8 @@
 
 环境变量是在 Vercel 中保存的部署配置。敏感值不会出现在浏览器源码中，也不应写入 GitHub。
 
+使用 README 的一键部署按钮时，Vercel 会在部署前一次要求填写 `DATABASE_URL`、`ADMIN_PASSWORD` 和 `ADMIN_RECOVERY_KEY`。
+
 ## 必填变量
 
 ### DATABASE_URL
@@ -28,7 +30,7 @@
 初始管理员创建后，密码以加盐哈希保存在 Neon。重新部署或修改 `ADMIN_PASSWORD` 不会覆盖数据库中已有的管理员密码。日常改密应在“用户与权限”中完成。
 :::
 
-### ADMIN_RECOVERY_KEY（强烈建议）
+### ADMIN_RECOVERY_KEY
 
 | 项目 | 内容 |
 | --- | --- |
@@ -94,6 +96,8 @@ Vercel 通常提供三类环境：
 2. 找到最新生产部署。
 3. 打开右侧菜单并选择 **Redeploy**。
 4. 确认使用当前项目设置重新构建。
+
+如果部署后修改任何一个环境变量，仍需重新部署，新值才会被 Functions 读取。
 
 ## 检查清单
 
