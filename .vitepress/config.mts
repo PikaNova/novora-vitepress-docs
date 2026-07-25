@@ -77,9 +77,8 @@ export default defineConfig({
           { text: 'A. 故障排查', link: '/appendix/a-troubleshooting' },
           { text: 'B. 本地开发', link: '/appendix/b-local-development' },
           { text: 'C. ClassIsland 插件', link: '/appendix/c-classisland' },
-          { text: 'D. 作者遥测后台', link: '/appendix/d-telemetry' },
-          { text: 'E. 本地部署', link: '/appendix/e-local-deployment' },
-          { text: 'F. Functions 迁移到新加坡', link: '/appendix/f-singapore-functions' }
+          { text: 'D. 本地部署', link: '/appendix/e-local-deployment' },
+          { text: 'E. Functions 迁移到新加坡', link: '/appendix/f-singapore-functions' }
         ]
       }
     ],
