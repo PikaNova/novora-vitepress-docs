@@ -6,10 +6,6 @@
 
 **官方问题反馈与部署交流群：`1067566386`**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD)
-
-简易流程：创建 Neon 新加坡数据库 → 一键部署 → 创建 `main` Deploy Hook 并填写 `VERCEL_DEPLOY_HOOK_URL` → Redeploy → 从首页初始化并保存自动恢复密钥。完整步骤从文档首页进入。
-
 - [创建 Vercel Deploy Hook 并填写环境变量](./guide/07-environment.md#创建-deploy-hook正式部署必做)
 - [后续版本完整更新、验收与回滚流程](./guide/12-maintenance.md)
 
