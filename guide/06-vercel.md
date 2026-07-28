@@ -2,7 +2,7 @@
 
 本章优先使用官方仓库的一键部署按钮。开始前应已完成 Neon 项目创建，并准备好 Pooled connection string 和管理员初始密码。恢复密钥会在初始化时自动生成。
 
-## 一键部署（推荐）
+## 一键部署（不再推荐！！！无法获取更新）请使用底部的Fork作者仓库
 
 1. 登录 GitHub 和 [Vercel](https://vercel.com/)。
 2. 打开 [PikaNova/Novora](https://github.com/PikaNova/Novora)。
@@ -23,8 +23,9 @@ Deploy Hook 依赖已经存在的 Vercel 项目，因此无法在一键部署的
 Vercel 会在你的 Git 服务账号下创建克隆仓库，之后每次向该仓库生产分支提交代码，都会触发新的 Vercel 部署。
 :::
 
-## 手动导入 GitHub 仓库（备用）
+## 手动导入 GitHub 仓库（推荐）
 
+0. 在 [Github仓库](https://github.com/PikaNova/Novora)中，Fork这个项目
 1. 登录 [Vercel Dashboard](https://vercel.com/dashboard)。
 2. 点击 **Add New... → Project**。
 3. 在仓库列表中找到自己的 `Novora` 仓库。
