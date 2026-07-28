@@ -121,7 +121,7 @@ ClassIsland 插件通过 `/api/exams` 与 Novora 配对，获得当前班级有�
 
 ## 更新和重新部署
 
-正式部署必须配置 `VERCEL_DEPLOY_HOOK_URL`。超级管理员可在“版本与更新”检查官方版本，然后点击 **一键部署更新**，触发当前项目已连接 `main` 分支的 Deploy Hook。使用 Fork 时需先同步官方上游提交。
+正式部署必须配置 `VERCEL_DEPLOY_HOOK_URL`。超级管理员可在“版本与更新”检查作者发布的最新版本；更新时必须先在 GitHub 将作者仓库同步到自己的 Fork `main`。随后 Vercel 会自动部署该提交；**一键部署更新**只会触发当前 Fork 的 Deploy Hook 重新构建，不能获取作者仓库的新代码。
 
 V2.5.6 起，该卡片提供可展开的 **查看后续更新完整流程**，直接说明同步 Fork、备份、检查版本、触发部署、验收和回滚。更完整的维护记录要求见[日常维护](/guide/12-maintenance)。
 

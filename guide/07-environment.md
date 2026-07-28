@@ -2,7 +2,7 @@
 
 环境变量是在 Vercel 中保存的部署配置。敏感值不会出现在浏览器源码中，也不应写入 GitHub。
 
-使用 README 的一键部署按钮时，Vercel 首次要求填写 `DATABASE_URL` 和 `ADMIN_PASSWORD`。项目创建后还必须生成 Deploy Hook，并补充 `VERCEL_DEPLOY_HOOK_URL`。
+从自己的 Fork 创建 Vercel 项目时，首次必须填写 `DATABASE_URL` 和 `ADMIN_PASSWORD`。项目创建后还必须生成 Deploy Hook，并补充 `VERCEL_DEPLOY_HOOK_URL`。
 
 ## 必填变量
 
@@ -40,7 +40,7 @@
 
 该钩子用于后台“版本与更新 → 一键部署更新”。Hook URL 能触发生产部署，应像密码一样保管，不能写入 GitHub 或公开截图。
 
-::: warning 为什么不能在一键部署第一屏填写
+::: warning 为什么不能在首次创建项目时填写
 Deploy Hook 只有 Vercel 项目创建后才能生成。第一次 Deploy 是创建项目的引导步骤；生成钩子、添加变量并 Redeploy 后，正式配置才完整。
 :::
 
@@ -76,7 +76,7 @@ Deploy Hook 只有 Vercel 项目创建后才能生成。第一次 Deploy 是创�
 2. 在 Connected Git Repository 中确认连接的是实际部署 Novora 的仓库。
 3. 确认 Production Branch，通常为 `main`。
 
-Hook 只会重新构建这里连接的仓库和所选分支。若这里连接的是你的一键部署副本或 Fork，它不会自动修改该仓库中的代码。
+Hook 只会重新构建这里连接的 Fork 和所选分支。它不会自动把作者仓库的新提交同步到你的 Fork。
 
 ### 第二步：生成 Hook URL
 

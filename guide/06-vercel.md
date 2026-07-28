@@ -1,37 +1,18 @@
-# 6. 配置 Vercel 项目
+# 6. 从 Fork 创建 Vercel 项目
 
-本章优先使用官方仓库的一键部署按钮。开始前应已完成 Neon 项目创建，并准备好 Pooled connection string 和管理员初始密码。恢复密钥会在初始化时自动生成。
+本章只从上一章创建的 Fork 导入项目。开始前应已完成 Neon 数据库创建，并准备好 Pooled connection string 和管理员初始密码。恢复密钥会在初始化时自动生成。
 
-## 一键部署（不再推荐！！！无法获取更新）请使用底部的Fork作者仓库
+## 新建项目
 
-1. 登录 GitHub 和 [Vercel](https://vercel.com/)。
-2. 打开 [PikaNova/Novora](https://github.com/PikaNova/Novora)。
-3. 在 README 顶部“一键部署”区域点击按钮：
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD&envDescription=请填写%20Neon%20PostgreSQL%20连接字符串和超级管理员初始密码)
-
-4. Vercel 要求登录或授权 GitHub 时，按页面提示完成授权。
-5. 确认创建的 GitHub Repository Name 和 Vercel Project Name，默认都是 `novora-board`。
-6. 在 `DATABASE_URL` 中粘贴 Neon 完整 Pooled connection string。
-7. 在 `ADMIN_PASSWORD` 中填写准备好的初始管理员密码。
-8. 点击 **Deploy**，等待首次构建完成。
-9. 按下一章创建 Deploy Hook、填写 `VERCEL_DEPLOY_HOOK_URL` 并重新部署。完成这一步后才算满足正式部署的必填配置。
-
-Deploy Hook 依赖已经存在的 Vercel 项目，因此无法在一键部署的第一屏提供真实值。这是唯一的两阶段配置项，完整步骤见下一章。
-
-::: tip 一键部署后的仓库属于你
-Vercel 会在你的 Git 服务账号下创建克隆仓库，之后每次向该仓库生产分支提交代码，都会触发新的 Vercel 部署。
-:::
-
-## 手动导入 GitHub 仓库（推荐）
-
-0. 在 [Github仓库](https://github.com/PikaNova/Novora)中，Fork这个项目
 1. 登录 [Vercel Dashboard](https://vercel.com/dashboard)。
 2. 点击 **Add New... → Project**。
-3. 在仓库列表中找到自己的 `Novora` 仓库。
-4. 点击仓库右侧的 **Import**。
+3. 在 GitHub 仓库列表中找到自己的 Novora Fork，例如 `你的用户名/Novora`。
+4. 点击该仓库右侧的 **Import**。
+5. 如果列表没有仓库，点击 GitHub App 权限设置，授权 Vercel 访问该 Fork 后返回刷新。
 
-如果找不到仓库，点击调整 GitHub App 权限，允许 Vercel 访问该仓库，然后返回重新选择。
+::: warning 只导入自己的 Fork
+生产项目必须连接自己的 Fork。后续更新会先通过 GitHub 的 **Sync fork** 进入这个仓库，再由 Vercel 自动部署或 Deploy Hook 重新构建。
+:::
 
 ## 项目基本设置
 
@@ -39,16 +20,34 @@ Vercel 会在你的 Git 服务账号下创建克隆仓库，之后每次向该�
 
 | 设置 | 推荐值 |
 | --- | --- |
-| Project Name | `novora` 或自定义名称 |
+| Project Name | `novora` 或学校可识别的名称 |
 | Framework Preset | `Vite` |
-| Root Directory | 包含 `package.json` 的目录 |
+| Root Directory | `./` |
 | Build Command | `npm run build` |
 | Output Directory | `dist` |
 | Install Command | 保持自动检测，通常为 `npm install` |
+| Production Branch | `main` |
 
-如果 GitHub 仓库根目录直接包含 `package.json`，Root Directory 保持 `./`。如果源码位于仓库的 `Novora` 子目录，点击 **Edit** 并选择该子目录。
+官方 Fork 的 `package.json` 位于根目录，因此 `Root Directory` 保持 `./`。不要复制其他项目的 Build 设置。
 
-一键部署会读取仓库配置，通常不需要手动修改这些项目设置。
+## 首次填写环境变量
+
+在点击 **Deploy** 前，展开 **Environment Variables**，至少添加：
+
+| Name | Value | Environment |
+| --- | --- | --- |
+| `DATABASE_URL` | Neon 的完整 Pooled connection string | Production，建议同时选择 Preview 和 Development |
+| `ADMIN_PASSWORD` | 单独准备的高强度初始管理员密码 | Production，建议同时选择 Preview 和 Development |
+
+不要在 Value 外加引号或空格。`VERCEL_DEPLOY_HOOK_URL` 需要项目创建后才能生成，下一章会单独配置。
+
+## 创建并确认首次部署
+
+1. 检查 Git Repository 显示的是自己的 Fork，Production Branch 是 `main`。
+2. 点击 **Deploy**。
+3. 等待构建状态变为 **Ready**。
+4. 打开分配的预览地址，确认页面能加载；数据库和管理员初始化将在后续章节完成。
+5. 继续阅读下一章，创建 Deploy Hook、填写 `VERCEL_DEPLOY_HOOK_URL`，再重新部署一次使变量生效。
 
 ## 将 Functions 设置为新加坡
 
@@ -66,22 +65,8 @@ Vercel 会在你的 Git 服务账号下创建克隆仓库，之后每次向该�
 
 ## 单页应用路由
 
-`vercel.json` 还把网页路径重写到 `index.html`。因此 `/admin`、`/exam`、`/settings` 等 React 路由可以直接刷新。
+`vercel.json` 会把网页路径重写到 `index.html`。因此 `/admin`、`/exam`、`/settings` 等 React 路由可以直接刷新。
 
 不要为了修复某个 404 而删除 `/api/:path*` 的重写；API 必须继续由 `api` 目录中的 Functions 处理。
-
-## 手动部署时暂时不要点击 Deploy
-
-在 Configure Project 页面展开 **Environment Variables**，继续阅读下一章并先填写必需变量。没有 `DATABASE_URL` 和 `ADMIN_PASSWORD` 的构建可能成功，但登录与数据保存无法正常工作。
-
-## 已经误点 Deploy 怎么办
-
-不需要删除项目：
-
-1. 等待部署结束。
-2. 打开项目的 **Settings → Environment Variables**。
-3. 添加下一章要求的变量。
-4. 回到 **Deployments**。
-5. 对最新部署执行 **Redeploy**。
 
 [下一章：配置环境变量 →](/guide/07-environment)

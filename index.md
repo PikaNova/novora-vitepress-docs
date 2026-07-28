@@ -16,8 +16,8 @@ hero:
       text: 学习功能
       link: /features/01-feature-overview
     - theme: alt
-      text: GitHub 一键部署
-      link: https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD
+      text: Fork 作者仓库
+      link: https://github.com/PikaNova/Novora/fork
 
 features:
   - title: 官方交流群 1067566386
@@ -35,18 +35,17 @@ features:
 > **群号：`1067566386`**<br>
 > 面向 Novora 部署、初始化和日常使用答疑。反馈故障时请提供页面错误和 Request ID，敏感环境变量必须打码。
 
-## 五步简易部署
+## 六步简易部署
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3a%2f%2fgithub.com%2fPikaNova%2fNovora&project-name=novora-board&repository-name=novora-board&env=DATABASE_URL,ADMIN_PASSWORD&envDescription=请填写%20Neon%20连接字符串和超级管理员初始密码)
-
-1. 在 Neon 创建 AWS Singapore 数据库并复制 Pooled connection string。
-2. 点击上方按钮，填写 `DATABASE_URL` 和 `ADMIN_PASSWORD`，完成首次部署。
-3. 在 Vercel 为 `main` 创建 Deploy Hook，加入必填变量 `VERCEL_DEPLOY_HOOK_URL` 后重新部署。
-4. 将 Functions 设为 Singapore (`sin1`)，再绑定自定义域名。
-5. 从首页进入初始化，修改密码并保存自动生成、只显示一次的恢复密钥。
+1. 在 GitHub Fork [PikaNova/Novora](https://github.com/PikaNova/Novora)，保留自己的 Fork `main` 分支。
+2. 在 Neon 创建 AWS Singapore 数据库并复制 Pooled connection string。
+3. 在 Vercel 新建 Project，导入自己的 Fork，填写 `DATABASE_URL` 和 `ADMIN_PASSWORD`，完成首次部署。
+4. 在 Vercel 为 `main` 创建 Deploy Hook，加入必填变量 `VERCEL_DEPLOY_HOOK_URL` 后重新部署。
+5. 将 Functions 设为 Singapore (`sin1`)，再绑定自定义域名。
+6. 从首页进入初始化，修改密码并保存自动生成、只显示一次的恢复密钥。
 
 ::: warning Deploy Hook 的创建顺序
-Hook 只有 Vercel 项目创建后才能生成，所以需要在首次部署后补充并 Redeploy。它部署当前项目连接仓库的 `main` 分支；Fork 用户需先同步上游。
+Hook 只有 Vercel 项目创建后才能生成，所以需要在首次部署后补充并 Redeploy。它只部署自己的 Fork `main` 分支；获取新版本必须先同步作者仓库。
 :::
 
 ## 推荐阅读方式

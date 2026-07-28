@@ -15,18 +15,19 @@
 
 V2 对旧字段有一定兼容和按需补列能力，但不保证所有 V1 自定义业务数据自动迁移。跨大版本升级前必须单独验证。
 
-## 第一步：判断项目使用哪种仓库
+## 第一步：确认 Fork 与生产分支
 
 先在 Vercel **Settings → Git** 查看 Connected Git Repository。
 
-| 仓库方式 | 更新前要做什么 |
+| 检查项 | 正确状态 |
 | --- | --- |
-| 直接连接官方 `PikaNova/Novora` 的 `main` | 确认目标提交已经进入官方 `main` |
-| 一键部署创建的个人仓库或 Fork | 先在 GitHub 使用 **Sync fork → Update branch** 同步官方上游 |
-| 含学校自定义代码的 Fork | 建立升级分支，合并上游，解决冲突并完成测试后再合入生产 `main` |
+| Connected Git Repository | 自己账号或学校组织下、来源为 `PikaNova/Novora` 的 Fork |
+| Production Branch | `main` |
+| 作者发布新版后 | 先将作者仓库同步到自己的 Fork，再部署 |
+| 有学校自定义代码时 | 建立升级分支，合并上游、解决冲突和测试后再合入 `main` |
 
-::: warning 一键部署更新不等于自动合并上游
-Deploy Hook 只让 Vercel 重新拉取已连接仓库的目标分支。若个人 Fork 仍是旧代码，反复点击只会重新部署旧版本。
+::: warning 唯一的代码更新来源是同步 Fork
+Deploy Hook、Redeploy 和 Vercel 的重新构建都不会下载作者仓库的新代码。自己的 Fork 未同步时，无论重新部署多少次，线上版本都不会变化。
 :::
 
 ## 第二步：备份并记录当前状态
@@ -37,7 +38,7 @@ Deploy Hook 只让 Vercel 重新拉取已连接仓库的目标分支。若个人
 4. 导出需要额外留存的大型考试和周测 JSON。
 5. 选择没有考试、周测和课堂使用的维护窗口。
 
-## 第三步：同步 GitHub 源码
+## 第三步：同步作者仓库到 Fork
 
 使用 Fork 时，可以通过 GitHub 的 **Sync fork** 获取上游更新。若存在自己的代码修改，不要在生产前直接强制覆盖，应先在分支中合并并检查冲突。
 
@@ -50,9 +51,9 @@ Deploy Hook 只让 Vercel 重新拉取已连接仓库的目标分支。若个人
 5. 等待同步完成，确认生产分支仍为 `main`。
 6. 打开最新提交，确认版本文件和 Release Notes 对应目标版本。
 
-如果 GitHub 提示冲突，不要点击丢弃自定义提交。应先建立测试分支处理冲突，或联系维护人员。合并到 Vercel 连接的生产分支后，Git 集成可能已经自动开始新部署；不要同时连续点击 Deploy Hook。
+如果 GitHub 提示冲突，不要点击丢弃自定义提交。应先建立测试分支处理冲突，或联系维护人员。同步完成后，Fork 的 `main` 才包含新版代码。
 
-## 第四步：在客户端检查更新
+## 第四步：确认版本和同步结果
 
 1. 使用有部署权限的超级管理员登录。
 2. 打开 **系统设置 → 版本与更新**。
@@ -60,24 +61,22 @@ Deploy Hook 只让 Vercel 重新拉取已连接仓库的目标分支。若个人
 4. 核对当前版本、最新版本和更新说明。
 5. 展开 **查看后续更新完整流程**，确认前置工作已完成。
 
-如果客户端发现新版本，但 Fork 尚未同步，先返回 GitHub 同步源码，不要直接触发部署。
+如果客户端发现新版本，但 Fork 尚未同步，先返回 GitHub 同步源码。进入 Fork 的 `main` 提交页，确认最新提交已经包含目标版本，再进行部署。
 
 “检查更新”读取官方 GitHub Release；它只负责比较版本，不会下载代码、修改数据库或自动开始部署。
 
-## 第五步：一键部署更新
+## 第五步：等待或触发 Vercel 部署
 
-已配置 `VERCEL_DEPLOY_HOOK_URL` 且当前账号拥有 `deployment.trigger` 权限时：
+同步到 Fork 的 `main` 后，Vercel 的 Git 集成通常会自动创建新的 Production Deployment。优先使用这条自动部署：
 
-1. 点击 **一键部署更新**一次。
-2. 页面提示已触发后不要重复点击。
-3. 打开 Vercel 项目 **Deployments**。
-4. 确认出现来源为 Deploy Hook 或目标 `main` 提交的新部署。
-5. 打开构建详情，确认依赖安装、`npm run build` 和输出发布成功。
-6. 等待 Production 状态变为 **Ready**。
+1. 打开 Vercel 项目 **Deployments**。
+2. 确认出现以 Fork `main` 最新提交为来源的新部署。
+3. 打开构建详情，确认依赖安装、`npm run build` 和输出发布成功。
+4. 等待 Production 状态变为 **Ready**。
 
-如果同步 Fork 后，Vercel 的 Git 集成已经自动创建了目标提交的部署，直接观察这一条部署即可，不要再点击按钮创建重复任务。
+如果同步完成后几分钟内没有自动部署，先在 **Settings → Git** 检查 Connected Git Repository 和 Production Branch 是否仍指向自己的 Fork `main`。确认无误后，可以在 Vercel 对该提交执行 **Redeploy**。
 
-若按钮不存在，回到[配置环境变量：创建 Deploy Hook](/guide/07-environment#创建-deploy-hook-正式部署必做)检查 Hook、Production 环境和 Redeploy。
+也可以由具备 `deployment.trigger` 权限的管理员在 Novora 的“系统设置 → 版本与更新”点击 **一键部署更新**。该按钮只是调用 `VERCEL_DEPLOY_HOOK_URL` 重新构建当前 Fork；它不是获取更新的步骤，只应在 Fork 已完成同步而 Vercel 未自动开始部署时使用。若按钮不可用，回到[配置环境变量：创建 Deploy Hook](/guide/07-environment#创建-deploy-hook-正式部署必做)检查 Hook、Production 环境和 Redeploy。
 
 重新部署不会自动修改 Neon 中已存在的管理员密码，也不会清空业务数据。
 
