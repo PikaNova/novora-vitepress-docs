@@ -33,8 +33,16 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '1. 首页', link: '/effect/01-index' },
-          { text: '2. 大屏', link: '/effect/02-screen' },
-          { text: '3. 后台管理', link: '/effect/03-admin' },
+          { text: '2. 考试大屏', link: '/effect/02-screen' },
+          { text: '3. 后台总览', link: '/effect/03-admin' },
+          { text: '4. 大型考试', link: '/effect/04-major-exam' },
+          { text: '5. 周测计划', link: '/effect/05-weekly' },
+          { text: '6. 批量与导入', link: '/effect/06-batch-import' },
+          { text: '7. 快速考试', link: '/effect/07-quick-start' },
+          { text: '8. PDF 导出', link: '/effect/08-pdf' },
+          { text: '9. 设备与用户', link: '/effect/09-devices-users' },
+          { text: '10. 设置与更新', link: '/effect/10-settings-update' },
+          { text: '11. ClassIsland', link: '/effect/11-classisland' }
         ]
       },
       {
