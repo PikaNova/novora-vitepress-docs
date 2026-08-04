@@ -38,6 +38,18 @@ export default defineConfig({
         ]
       },
       {
+        text: '更新日志',
+        collapsed: false,
+        items: [
+          { text: '更新日志', link: '/changelog' },
+          { text: 'V2.7.1（dev 最新）', link: '/changelog/v2.7.1' },
+          { text: 'V2.7.0', link: '/changelog/v2.7.0' },
+          { text: 'V2.6.2', link: '/changelog/v2.6.2' },
+          { text: 'V2.6.1', link: '/changelog/v2.6.1' },
+          { text: 'V2.6.0', link: '/changelog/v2.6.0' }
+        ]
+      },
+      {
         text: '部署主线',
         collapsed: false,
         items: [
@@ -80,18 +92,6 @@ export default defineConfig({
           { text: 'C. ClassIsland 插件', link: '/appendix/c-classisland' },
           { text: 'D. 本地部署', link: '/appendix/e-local-deployment' },
           { text: 'E. Functions 迁移到新加坡', link: '/appendix/f-singapore-functions' }
-        ]
-      },
-      {
-        text: '更新日志',
-        collapsed: false,
-        items: [
-          { text: '更新日志', link: '/changelog' },
-          { text: 'V2.7.1（dev 最新）', link: '/changelog/v2.7.1' },
-          { text: 'V2.7.0', link: '/changelog/v2.7.0' },
-          { text: 'V2.6.2', link: '/changelog/v2.6.2' },
-          { text: 'V2.6.1', link: '/changelog/v2.6.1' },
-          { text: 'V2.6.0', link: '/changelog/v2.6.0' }
         ]
       }
     ],
