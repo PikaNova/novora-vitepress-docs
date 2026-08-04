@@ -50,7 +50,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '更新日志', link: '/changelog' },
-          { text: 'V2.7.1（dev 最新）', link: '/changelog/v2.7.1' },
+          { text: 'V2.7.1（main 最新）', link: '/changelog/v2.7.1' },
           { text: 'V2.7.0', link: '/changelog/v2.7.0' },
           { text: 'V2.6.2', link: '/changelog/v2.6.2' },
           { text: 'V2.6.1', link: '/changelog/v2.6.1' },
