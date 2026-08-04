@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
-  description: 'Novora V2.5.6 从零部署、功能使用与维护指南',
+  description: 'Novora 从零部署、功能使用与维护指南（更新日志覆盖至 V2.7.1）',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -24,6 +24,7 @@ export default defineConfig({
       { text: '从零部署', link: '/guide/01-introduction' },
       { text: '功能使用', link: '/features/01-feature-overview' },
       { text: '故障排查', link: '/appendix/a-troubleshooting' },
+      { text: '更新日志', link: '/changelog' },
       { text: '项目仓库', link: 'https://github.com/PikaNova/Novora' }
     ],
     sidebar: [
@@ -80,6 +81,18 @@ export default defineConfig({
           { text: 'D. 本地部署', link: '/appendix/e-local-deployment' },
           { text: 'E. Functions 迁移到新加坡', link: '/appendix/f-singapore-functions' }
         ]
+      },
+      {
+        text: '更新日志',
+        collapsed: false,
+        items: [
+          { text: '更新日志', link: '/changelog' },
+          { text: 'V2.7.1（dev 最新）', link: '/changelog/v2.7.1' },
+          { text: 'V2.7.0', link: '/changelog/v2.7.0' },
+          { text: 'V2.6.2', link: '/changelog/v2.6.2' },
+          { text: 'V2.6.1', link: '/changelog/v2.6.1' },
+          { text: 'V2.6.0', link: '/changelog/v2.6.0' }
+        ]
       }
     ],
     socialLinks: [
@@ -87,7 +100,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.5.6 整理'
+      copyright: '内容基于 Novora V2.5.6 整理，更新日志覆盖至 V2.7.1'
     },
     search: { provider: 'local' }
   }
