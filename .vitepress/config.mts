@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
-  description: 'Novora 从零部署、功能使用与维护指南（更新日志覆盖至 V2.7.1）',
+  description: 'Novora 从零部署、功能使用与维护指南（更新日志覆盖至 V2.7.2）',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -50,6 +50,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '更新日志', link: '/changelog' },
+          { text: 'V2.7.2（main 最新）', link: '/changelog/v2.7.2' },
           { text: 'V2.7.1（main 最新）', link: '/changelog/v2.7.1' },
           { text: 'V2.7.0', link: '/changelog/v2.7.0' },
           { text: 'V2.6.2', link: '/changelog/v2.6.2' },
@@ -99,6 +100,7 @@ export default defineConfig({
           { text: 'B. 本地开发', link: '/appendix/b-local-development' },
           { text: 'C. ClassIsland 插件', link: '/appendix/c-classisland' },
           { text: 'D. 本地部署', link: '/appendix/e-local-deployment' },
+          { text: 'F. 本地/内网部署（Docker）', link: '/appendix/g-local-deployment' },
           { text: 'E. Functions 迁移到新加坡', link: '/appendix/f-singapore-functions' }
         ]
       }
@@ -108,7 +110,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.5.6 整理，更新日志覆盖至 V2.7.1'
+      copyright: '内容基于 Novora V2.5.6 整理，更新日志覆盖至 V2.7.2'
     },
     search: { provider: 'local' }
   }
