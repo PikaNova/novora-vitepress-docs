@@ -86,6 +86,8 @@ exam.example.com
 
 清除浏览器缓存可能影响当前设备设置，但不会直接删除 Neon 中的数据。重建 Vercel 部署也不会清空 Neon。
 
+本地/内网部署时，网页与 `/api/*` 由本机服务进程托管，数据保存在本机 PostgreSQL（内嵌或自有实例），不再依赖 Vercel 与 Neon。架构对应关系与云端相同，只是三层都运行在本地；详细步骤见[本地/内网与 NAS 部署](/appendix/g-local-deployment)。
+
 ## 推荐区域
 
 ```text
