@@ -23,27 +23,91 @@
 - 安装 Docker 与 Docker Compose；
 - 准备一台可长期开机的电脑或服务器，并规划固定局域网 IP。
 
-### 启动步骤
+### 启动步骤（完整命令）
 
-1. 获取源码并进入仓库目录。
-2. 复制环境变量模板：
+1. 检查 Docker 环境：
 
 ```bash
-cp .env.example .env
+docker --version
+docker compose version
 ```
 
-3. 按需在 `.env` 中填写 `ADMIN_PASSWORD` 等；`DATABASE_URL` 由 Compose 自动注入，可留空。
+2. 创建目录并拉取仓库（推荐使用自己的 Fork）：
+
+```bash
+sudo mkdir -p /opt/novora
+cd /opt/novora
+sudo git clone https://github.com/你的用户名/Novora.git .
+# 没有 Fork 时可用官方仓库：
+# sudo git clone https://github.com/PikaNova/Novora.git .
+```
+
+3. 准备环境变量：
+
+```bash
+sudo cp .env.example .env
+sudo nano .env
+```
+
+`.env` 中需要修改的关键项：
+
+```text
+ADMIN_PASSWORD=你的强密码   # 至少 8 位，建议 12 位以上
+PORT=3000                  # 可选，默认 3000
+# DATABASE_URL 留空：Compose 会自动注入内嵌 PostgreSQL 地址
+# 可选：POSTGRES_USER / POSTGRES_PASSWORD / POSTGRES_DB（默认 novora / novora / novora）
+VITE_SPEED_INSIGHTS=false  # 本地部署保持 false
+```
+
 4. 构建并启动：
 
 ```bash
-docker compose up -d --build
+sudo docker compose up -d --build
 ```
 
-5. 打开 `http://主机局域网IP:3000`，首次使用 `admin` 与 `ADMIN_PASSWORD` 登录，随后完成初始化并保存恢复密钥。
+5. 查看状态与日志：
+
+```bash
+sudo docker compose ps
+sudo docker compose logs -f app   # Ctrl+C 退出日志
+```
+
+6. 访问并完成初始化：
+
+- 浏览器打开 `http://服务器局域网IP:3000`；
+- 首次使用 `admin` 与 `ADMIN_PASSWORD` 登录；
+- 按向导完成初始化，最后一步生成只显示一次的恢复密钥，请务必保存。
+
+说明：
 
 - 数据持久化在 Docker 卷 `novora_pgdata`，删除容器不会丢数据；
 - 首次启动会自动创建全部数据表，无需手工执行 SQL；
-- 常用命令：`docker compose up -d --build`、`docker compose down`、`docker compose logs -f app`。
+- 服务器防火墙或安全组需要放行 `3000` 端口（或你在 `.env` 中修改的 `PORT`）。
+
+### 维护命令
+
+```bash
+# 停止（数据保留）
+sudo docker compose down
+
+# 再次启动
+sudo docker compose up -d
+
+# 更新到最新代码并重新构建
+cd /opt/novora
+sudo git pull
+sudo docker compose up -d --build
+
+# 查看数据卷
+sudo docker volume ls
+
+# 备份数据库
+sudo docker compose exec db pg_dump -U novora -d novora -F c -f /tmp/novora.dump
+sudo docker compose cp db:/tmp/novora.dump ./novora-$(date +%F).dump
+```
+
+`restart: unless-stopped` 已配置，服务器重启后容器会自动拉起。
+
 
 ## 配置反向代理（公网或域名访问时推荐）
 
@@ -84,16 +148,25 @@ novora.example.com {
 
 要求 Node.js 22+ 与 PostgreSQL 14+（本机或内网实例）：
 
-1. 创建数据库并准备连接串。
-2. 复制 `.env.example` 为 `.env`，填写 `DATABASE_URL`、`ADMIN_PASSWORD`。
-3. 安装依赖并启动：
+1. 创建目录并拉取仓库：
+
+```bash
+sudo mkdir -p /opt/novora
+cd /opt/novora
+sudo git clone https://github.com/你的用户名/Novora.git .
+```
+
+2. 创建数据库并准备连接串。
+3. 复制 `.env.example` 为 `.env`，填写 `DATABASE_URL`、`ADMIN_PASSWORD`。
+4. 安装依赖并启动：
 
 ```bash
 npm install
 npm run serve
 ```
 
-4. 访问 `http://localhost:3000`（或局域网 IP）。
+5. 访问 `http://localhost:3000`（或局域网 IP）。
+
 
 `npm run serve` 会先构建前端与 server，再启动单个 Node 进程托管静态站点和全部 API。
 
