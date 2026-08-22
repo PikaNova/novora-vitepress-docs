@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
-  description: 'Novora 从零部署、功能使用与维护指南（更新日志覆盖至 V2.7.2）',
+  description: 'Novora 从零部署、功能使用与维护指南（更新日志覆盖至 V2.7.3）',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -50,8 +50,9 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '更新日志', link: '/changelog' },
-          { text: 'V2.7.2（main 最新）', link: '/changelog/v2.7.2' },
-          { text: 'V2.7.1（main 最新）', link: '/changelog/v2.7.1' },
+          { text: 'V2.7.3（main 最新）', link: '/changelog/v2.7.3' },
+          { text: 'V2.7.2', link: '/changelog/v2.7.2' },
+          { text: 'V2.7.1', link: '/changelog/v2.7.1' },
           { text: 'V2.7.0', link: '/changelog/v2.7.0' },
           { text: 'V2.6.2', link: '/changelog/v2.6.2' },
           { text: 'V2.6.1', link: '/changelog/v2.6.1' },
@@ -109,7 +110,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.5.6 整理，更新日志覆盖至 V2.7.2'
+      copyright: '内容基于 Novora V2.5.6 整理，更新日志覆盖至 V2.7.3'
     },
     search: { provider: 'local' }
   }

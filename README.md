@@ -1,6 +1,6 @@
 # Novora VitePress 文档
 
-这是一套可独立运行的 VitePress 文档站，包含 12 篇部署文档、10 篇功能使用文档和 6 篇附录，内容以 Novora V2.5.6 正式版为基准，更新日志覆盖至 V2.7.2（main 最新）。
+这是一套可独立运行的 VitePress 文档站，包含 12 篇部署文档、10 篇功能使用文档和 6 篇附录，内容以 Novora V2.5.6 正式版为基准，更新日志覆盖至 V2.7.3（main 最新）。
 
 文档地址 <https://docs.pikachu2026.space>
 
