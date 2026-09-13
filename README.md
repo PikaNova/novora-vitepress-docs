@@ -1,13 +1,26 @@
 # Novora VitePress 文档
 
-这是一套可独立运行的 VitePress 文档站，包含 12 篇部署文档、10 篇功能使用文档和 6 篇附录，内容以 Novora V2.5.6 正式版为基准，更新日志覆盖至 V2.7.3（main 最新）。
+这是一套可独立运行的 VitePress 文档站，内容以 Novora **V2.8.0** 为基准，包含：
+
+- **快速开始**：五分钟上手部署 + 部署完的第一个小时 + 开发者入门 + 术语表
+- **部署主线**：开始之前 4 篇 + Vercel 云端 9 篇 + 本地/内网 6 篇 + 迁移与网络 3 篇
+- **功能使用**：功能总览 + 六个模块 + 10 篇操作与专题
+- **管理员手册**：4 个角色 + 学期清单 + 主题 + 教室设备运维
+- **常见问题**：快问快答 + 5 篇主题 FAQ
+- **集成与 API**：ClassIsland 插件 4 篇 + 考试数据接口
+- **场景演练**：第一次全校上线 / 考试当天 / 假期与开学
+- **更新日志**：V2.8.0 起（含 V2.7.4–V2.7.6 修补批次）
+- **附录**：故障排查、本地开发、ClassIsland 速查、Functions 区域、版本兼容、错误信息对照表
 
 文档地址 <https://docs.pikachu2026.space>
 
 **官方问题反馈与部署交流群：`1067566386`**
 
-- [创建 Vercel Deploy Hook 并填写环境变量](./guide/07-environment.md#创建-deploy-hook正式部署必做)
-- [后续版本完整更新、验收与回滚流程](./guide/12-maintenance.md)
+- [选择部署方式](./guide/00-deploy-paths.md)
+- [创建 Vercel Deploy Hook 并填写环境变量](./guide/vercel/04-environment.md#创建-deploy-hook正式部署必做)
+- [Vercel 日常维护与回滚](./guide/vercel/09-maintenance.md)
+- [本地更新与维护](./guide/local/06-maintenance.md)
+- [版本兼容与升级](./appendix/e-version-compatibility.md)
 - [更新日志](./changelog.md)
 
 ## 本地运行
