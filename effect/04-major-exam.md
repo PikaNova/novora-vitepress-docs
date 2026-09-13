@@ -25,3 +25,9 @@
 发布前确认考试安排，完成创建或继续调整。
 
 ![大型考试-确认](/pictures/large-exam-confirm.png)
+
+## 相关文档
+
+- 模块说明：[大型考试](/features/03-major-module)
+- 完整操作教程：[创建一场大型考试](/features/08-create-major-exam)
+- 新增的考试记录管理：[考试记录管理](/features/03-major-module#考试记录管理-v2-8-0-新增)

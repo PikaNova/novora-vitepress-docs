@@ -25,3 +25,9 @@
 新建自定义角色并配置各模块访问权限，按年级、班级范围授权。
 
 ![用户-角色权限](/pictures/role-scope.png)
+
+## 相关文档
+
+- 设备模块：[设备管理](/features/06-devices-module)
+- 用户与权限模块：[用户与权限](/features/07-users-module)
+- 按角色的日常操作：[管理员手册](/admin/)

@@ -1,4 +1,4 @@
-# 11. 正式上线
+# 8. 正式上线
 
 正式上线不是再次点击 Deploy，而是确认访问入口、安全、数据责任和故障处理方式都已经确定。
 
@@ -86,7 +86,7 @@ pg_dump --dbname="生产连接串" --format=custom --no-owner --no-privileges --
 
 ## 最终上线清单
 
-- [ ] 已完成第 10 章全部核心验收
+- [ ] 已完成[部署验收](/guide/vercel/07-acceptance)全部核心项
 - [ ] 主域名与 HTTPS 正常
 - [ ] 已删除验收测试数据和测试账号
 - [ ] 超级管理员已更换初始密码
@@ -96,4 +96,4 @@ pg_dump --dbname="生产连接串" --format=custom --no-owner --no-privileges --
 - [ ] 已记录 GitHub、Vercel、Neon 和 DNS 责任人
 - [ ] 已准备故障时的校内通知渠道
 
-[下一章：日常维护 →](/guide/12-maintenance)
+[下一篇：日常维护 →](/guide/vercel/09-maintenance)

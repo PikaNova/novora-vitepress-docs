@@ -1,6 +1,10 @@
-# 5. 创建 Neon 数据库
+# 2. 创建 Neon 数据库
 
 Neon 用来保存 Novora 的学校结构、考试安排、设备绑定和管理员账户。本章只创建数据库，不需要手工创建数据表。
+
+::: tip 使用本地部署？
+本地/内网部署不使用 Neon，直接跳过本篇，进入[本地部署总览](/guide/local/01-overview)。
+:::
 
 ## 创建项目
 
@@ -37,7 +41,7 @@ Vercel Functions 会按请求启动和释放实例。使用连接池可以减少
 
 ## 保存连接串
 
-将连接串暂时保存在密码管理器或其他安全位置，下一章填写到 Vercel 的 `DATABASE_URL`。
+将连接串暂时保存在密码管理器或其他安全位置，下一篇填写到 Vercel 的 `DATABASE_URL`。
 
 ::: danger 数据库连接串等同于密码
 任何获得连接串的人都可能访问或修改数据库。不要把它提交到 GitHub，不要放进公开截图，也不要通过公开聊天发送。
@@ -57,4 +61,4 @@ Vercel Functions 会按请求启动和释放实例。使用连接池可以减少
 - [ ] 连接串保留了 `sslmode=require` 等 SSL 参数
 - [ ] 连接串没有提交到 GitHub
 
-[下一章：配置 Vercel 项目 →](/guide/06-vercel)
+[下一篇：配置 Vercel 项目 →](/guide/vercel/03-vercel)

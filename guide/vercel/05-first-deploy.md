@@ -1,4 +1,4 @@
-# 8. 执行首次部署
+# 5. 执行首次部署与绑定域名
 
 本章完成第一次构建，并在初始化前绑定自定义域名。中国大陆用户不应把 `*.vercel.app` 作为唯一正式入口。
 
@@ -113,4 +113,4 @@ https://exam.example.com/api/time
 - [ ] 学校网络可以打开首页
 - [ ] `/api/time` 返回有效响应
 
-[下一章：首次登录和初始化 →](/guide/09-initialization)
+[下一篇：首次登录和初始化 →](/guide/vercel/06-initialization)

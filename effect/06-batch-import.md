@@ -25,3 +25,9 @@
 粘贴 AI 生成的 JSON 考试数据，批量导入考试安排并按时间排序。
 
 ![导入-JSON](/pictures/json-import.png)
+
+## 相关文档
+
+- 批量与导入说明：[其他功能](/features/10-other-features#json-导入导出与-ai-提示词)
+- 周测批量应用：[创建一场周测](/features/09-create-weekly-test#批量应用到其他班级)
+- 大型考试 JSON 导入：[创建一场大型考试](/features/08-create-major-exam#使用-json-导入)

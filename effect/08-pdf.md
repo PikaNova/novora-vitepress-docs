@@ -13,3 +13,8 @@
 选择需要导出的班级范围，确认后每班生成一张 A4 PDF。
 
 ![PDF-批量导出](/pictures/pdf-preview-1.png)
+
+## 相关文档
+
+- PDF 说明：[其他功能 · 考试安排预览和 A4 PDF](/features/10-other-features#考试安排预览和-a4-pdf)
+- 部署验收中的 PDF 检查项：[部署验收](/guide/vercel/07-acceptance)

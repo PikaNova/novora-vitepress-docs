@@ -31,3 +31,9 @@
 另一考试进行中状态：显示科目、进度百分比、剩余时间与下一科目预告。
 
 ![大屏-考试进行中-进度](/pictures/exam-running-progress.png)
+
+## 相关文档
+
+- 功能说明：[其他功能 · 快速开始考试](/features/10-other-features#快速开始考试)
+- 大屏不更新怎么排查：[设备与大屏](/faq/03-devices)
+- 本地设置与班级绑定：[其他功能](/features/10-other-features#班级选择和本地设置)

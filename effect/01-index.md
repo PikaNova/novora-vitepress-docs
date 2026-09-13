@@ -2,6 +2,10 @@
 
 首页是设备打开 Novora 后看到的第一个界面，负责设备用途选择、年级与班级绑定，并提供进入考试大屏与管理后台的入口。本部分按类型展示 Novora 各界面截图：
 
+::: tip 这是截图导览，不是操作教程
+这一栏用来「看看长什么样」。每个界面的功能说明和操作步骤在[功能使用](/features/01-feature-overview)里；每页底部都有对应的功能文档链接。
+:::
+
 - [2. 考试大屏](/effect/02-screen)
 - [3. 后台总览](/effect/03-admin)
 - [4. 大型考试](/effect/04-major-exam)
@@ -12,6 +16,7 @@
 - [9. 设备与用户](/effect/09-devices-users)
 - [10. 设置与更新](/effect/10-settings-update)
 - [11. ClassIsland 插件](/effect/11-classisland)
+- [12. 考试记录管理](/effect/12-exam-records)
 
 ## 选择年级与班级
 

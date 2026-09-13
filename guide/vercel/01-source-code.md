@@ -1,6 +1,8 @@
-# 4. Fork 作者仓库
+# 1. 获取项目源码（Fork）
 
-Novora 的正式部署统一使用自己的 Fork 仓库，再由 Vercel 导入这个 Fork 创建项目。这样可以保留清晰、可持续的上游同步流程，后续能可靠获取作者仓库更新。
+Novora 的 Vercel 部署统一使用自己的 Fork 仓库，再由 Vercel 导入这个 Fork 创建项目。这样可以保留清晰、可持续的上游同步流程，后续能可靠获取作者仓库更新。
+
+本地/内网部署不需要 Fork，直接在服务器上 `git clone` 即可，见[本地部署总览](/guide/local/01-overview)。
 
 ## Fork 前确认
 
@@ -45,10 +47,10 @@ vite.config.ts
 
 需要修改校名、功能或样式时，先在自己的 Fork 创建分支完成修改和测试，再合入 `main`。不要直接改作者仓库，也不要为了更新使用会覆盖自定义提交的强制命令。
 
-后续更新时，先同步作者上游，再处理与学校自定义代码的冲突。完整步骤见[日常维护](/guide/12-maintenance)。
+后续更新时，先同步作者上游，再处理与学校自定义代码的冲突。完整步骤见[Vercel 日常维护](/guide/vercel/09-maintenance)。
 
 ## 完成标志
 
-确认浏览器地址是自己的 Fork，仓库页显示来源 `PikaNova/Novora`，且能看到 `package.json`、`api`、`src` 与 `vercel.json`。下一章将把这个 Fork 导入 Vercel 并创建正式项目。
+确认浏览器地址是自己的 Fork，仓库页显示来源 `PikaNova/Novora`，且能看到 `package.json`、`api`、`src` 与 `vercel.json`。下一步将为它创建 Neon 数据库。
 
-[下一章：创建 Neon 数据库 →](/guide/05-neon)
+[下一篇：创建 Neon 数据库 →](/guide/vercel/02-neon)

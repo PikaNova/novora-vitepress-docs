@@ -31,3 +31,9 @@ ClassIsland 插件可将考试安排同步到班级桌面，支持配对连接�
 按考试展示各科安排，支持查看状态与操作。
 
 ![插件-提醒列表](/pictures/classisland-reminder-2.png)
+
+## 相关文档
+
+- 插件总览：[ClassIsland 插件](/integrations/classisland/01-overview)
+- 配对步骤：[配对与设备绑定](/integrations/classisland/02-pairing)
+- 常见问题：[插件常见问题](/integrations/classisland/04-faq)

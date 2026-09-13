@@ -1,4 +1,4 @@
-# F. 将 Vercel Functions 迁移到新加坡
+# D. 将 Vercel Functions 迁移到新加坡
 
 Novora 的 Functions 需要频繁访问 Neon。Neon 使用 AWS Singapore 时，Functions 也放在新加坡 `sin1`，可以避免每次 API 请求跨洲访问数据库。
 
@@ -69,4 +69,4 @@ Hobby 套餐通常只能选择一个函数区域。Novora 不需要同时选择�
 
 检查 Neon 是否也在新加坡、`DATABASE_URL` 是否使用 Pooled connection string，以及中国大陆网络是否能稳定访问当前域名。函数区域不能解决 Vercel 默认域名在部分网络中的可达性问题，正式使用仍建议绑定自定义域名。
 
-[返回：配置 Vercel 项目 →](/guide/06-vercel)
+[返回：配置 Vercel 项目 →](/guide/vercel/03-vercel)

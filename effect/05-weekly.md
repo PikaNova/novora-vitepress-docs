@@ -19,3 +19,9 @@
 配置计划周期、生效日期、重复规则与例外日期，支持节假日排除。
 
 ![周测-计划设置](/pictures/weekly-test-editor.png)
+
+## 相关文档
+
+- 模块说明：[周测计划](/features/04-weekly-module)
+- 完整操作教程：[创建一场周测](/features/09-create-weekly-test)
+- 常见疑问：[考试与周测](/faq/02-exams)

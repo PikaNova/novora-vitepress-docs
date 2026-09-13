@@ -1,16 +1,16 @@
 # 附录 B：本地开发
 
-本章面向需要修改源码、调试 API 或提交代码的开发者。仅通过 GitHub 和 Vercel 部署时可以跳过。
+本章面向需要修改源码、调试 API 或提交代码的开发者。仅通过 GitHub 和 Vercel 部署、或只是按[本地部署主线](/guide/local/01-overview)启动现成版本时，可以跳过。
 
 ## 环境要求
 
 推荐安装：
 
 - Git；
-- Node.js 20 LTS；
+- Node.js 22 或更高；
 - npm；
 - VS Code 或其他编辑器；
-- 可选：Vercel CLI；
+- 可选：Vercel CLI（调试云端部署时）；
 - 构建 ClassIsland 插件时另需 .NET 8 SDK。
 
 检查版本：
@@ -70,6 +70,16 @@ vercel dev --listen 3000
 ```
 
 可直接访问 Vercel dev 的 3000 端口；也可以同时运行 `npm run dev`，让 5173 端口把 `/api` 代理到 3000。
+
+## 使用本地服务调试 API
+
+不依赖 Vercel 时，可以直接运行项目自带的 Node 适配器：
+
+```bash
+npm run serve
+```
+
+它会把前端和 `api/*` handler 一起托管在 `http://localhost:3000`，对应[无 Docker 部署](/guide/local/03-node)的运行方式。修改 `api` 下的代码后需要重新构建再启动。
 
 ## 最小本地环境变量
 

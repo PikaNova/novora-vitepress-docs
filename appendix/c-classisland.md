@@ -1,5 +1,16 @@
 # 附录 C：ClassIsland 插件
 
+::: tip 本篇已升级为独立栏目
+ClassIsland 是有独立发布仓库的对外集成，文档已独立成「集成与 API」栏目，内容更完整：
+
+- [插件总览](/integrations/classisland/01-overview)
+- [配对与设备绑定](/integrations/classisland/02-pairing)
+- [接口与兼容](/integrations/classisland/03-api)
+- [插件常见问题](/integrations/classisland/04-faq)
+
+下面是快速参考，完整说明请以上面各篇为准。
+:::
+
 Novora 的 ClassIsland“考试提醒”插件是可选集成。它会同步当前设备绑定班级的考试，并通过 ClassIsland 提醒 API 显示开考提醒。
 
 ## 前置条件

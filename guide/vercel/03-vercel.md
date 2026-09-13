@@ -1,6 +1,6 @@
-# 6. 从 Fork 创建 Vercel 项目
+# 3. 从 Fork 创建 Vercel 项目
 
-本章只从上一章创建的 Fork 导入项目。开始前应已完成 Neon 数据库创建，并准备好 Pooled connection string 和管理员初始密码。恢复密钥会在初始化时自动生成。
+本篇只从第 1 篇创建的 Fork 导入项目。开始前应已完成 Neon 数据库创建，并准备好 Pooled connection string 和管理员初始密码。恢复密钥会在初始化时自动生成。
 
 ## 新建项目
 
@@ -39,7 +39,7 @@
 | `DATABASE_URL` | Neon 的完整 Pooled connection string | Production，建议同时选择 Preview 和 Development |
 | `ADMIN_PASSWORD` | 单独准备的高强度初始管理员密码 | Production，建议同时选择 Preview 和 Development |
 
-不要在 Value 外加引号或空格。`VERCEL_DEPLOY_HOOK_URL` 需要项目创建后才能生成，下一章会单独配置。
+不要在 Value 外加引号或空格。`VERCEL_DEPLOY_HOOK_URL` 需要项目创建后才能生成，下一篇会单独配置。
 
 ## 创建并确认首次部署
 
@@ -47,7 +47,7 @@
 2. 点击 **Deploy**。
 3. 等待构建状态变为 **Ready**。
 4. 打开分配的预览地址，确认页面能加载；数据库和管理员初始化将在后续章节完成。
-5. 继续阅读下一章，创建 Deploy Hook、填写 `VERCEL_DEPLOY_HOOK_URL`，再重新部署一次使变量生效。
+5. 继续阅读下一篇，创建 Deploy Hook、填写 `VERCEL_DEPLOY_HOOK_URL`，再重新部署一次使变量生效。
 
 ## 将 Functions 设置为新加坡
 
@@ -61,7 +61,7 @@
 
 这会把服务端 Functions 部署到新加坡。还可在 Vercel 项目 **Settings → Functions → Function Region** 中展开 **Asia Pacific**，选择 **Singapore (`sin1`)**，点击 **Save**，然后创建一次新部署使设置生效。
 
-若页面显示其他区域或 `Overridden`，以仓库 `vercel.json` 的 `sin1` 为准。保存区域后必须重新部署；旧 Deployment 不会迁移。完整截图式步骤见 [Functions 迁移到新加坡](/appendix/f-singapore-functions)。
+若页面显示其他区域或 `Overridden`，以仓库 `vercel.json` 的 `sin1` 为准。保存区域后必须重新部署；旧 Deployment 不会迁移。完整截图式步骤见 [Functions 迁移到新加坡](/appendix/d-singapore-functions)。
 
 ## 单页应用路由
 
@@ -69,4 +69,4 @@
 
 不要为了修复某个 404 而删除 `/api/:path*` 的重写；API 必须继续由 `api` 目录中的 Functions 处理。
 
-[下一章：配置环境变量 →](/guide/07-environment)
+[下一篇：配置环境变量 →](/guide/vercel/04-environment)

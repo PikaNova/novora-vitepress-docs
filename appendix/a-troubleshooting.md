@@ -1,12 +1,29 @@
 # 附录 A：常见问题与故障排查
 
+本附录处理「已经出现报错怎么修」。如果是「这么用对不对」的问题，先看[常见问题](/faq/)。
+
 排查时先记录发生时间、操作步骤、页面错误、HTTP 状态和请求 ID。一次只修改一个配置，修改后重新部署并复测，避免无法判断哪个改动生效。
+
+## 先确认你的部署方式
+
+不同部署方式的排查入口完全不同：
+
+| 排查对象 | Vercel 云端 | 本地 / 内网 |
+| --- | --- | --- |
+| 构建日志 | Vercel **Deployments → Build Logs** | `docker compose logs app` / `journalctl -u novora` |
+| 运行日志 | Vercel Functions Logs | `docker compose logs -f app` |
+| 数据库状态 | Neon Console | `docker compose ps` / `systemctl status postgresql` |
+| 域名与证书 | Vercel **Settings → Domains** | 反向代理配置与证书续期 |
+| 访问入口 | 自定义域名 | `http://内网IP:3000` |
+
+下面的对照表以 Vercel 云端为主；带 **(本地)** 标记的条目给出本地部署的对应检查方法。
 
 ## 快速定位表
 
 | 现象 | 优先检查 |
 | --- | --- |
 | Vercel 构建失败 | Build Logs、Root Directory、Node 依赖 |
+| 本地构建或启动失败 | `docker compose logs app`、`.env` 是否填写完整、端口是否被占用 |
 | 首页完全打不开 | 域名 DNS、Vercel Deployment 状态、学校网络 |
 | 首页白屏但有 HTML | JS/CSS 请求、`ASSET_CDN_BASE`、浏览器控制台 |
 | `/api/time` 404 | `vercel.json`、Root Directory、API 是否被识别 |
@@ -16,6 +33,8 @@
 | 刷新 `/admin` 404 | SPA rewrite、是否部署了正确项目根目录 |
 | 自定义域名 Pending | DNS 记录和传播时间 |
 | PDF 字体或版面异常 | 字体资源、浏览器、数据量、版本 |
+| 内网其他设备打不开 | 防火墙端口、固定 IP、是否绑定了 `127.0.0.1` |
+| 反向代理后接口被拒绝 | `X-Forwarded-Host`、`X-Forwarded-Proto`、`Host` 头 |
 
 ## 1. Vercel 构建失败
 
@@ -92,6 +111,21 @@ vercel.json
 
 再打开 Neon Console，确认项目和分支正常，没有达到平台额度或暂停状态。
 
+**(本地)** 检查容器与数据库状态：
+
+```bash
+sudo docker compose ps                          # app 与 db 是否都 running
+sudo docker compose logs --tail=100 db          # 数据库是否启动成功
+sudo docker compose exec db pg_isready -U novora
+```
+
+无 Docker 部署时确认 PostgreSQL 服务在运行，并检查 `.env` 里的 `DATABASE_URL` 是否指向正确的库和账号：
+
+```bash
+sudo systemctl status postgresql
+psql "postgresql://novora:密码@127.0.0.1:5432/novora" -c 'select 1'
+```
+
 ## 7. 首次 `admin` 登录失败
 
 全新数据库第一次登录时，用户名为：
@@ -109,7 +143,7 @@ admin
 
 不要为了找回密码直接删除生产数据库。先确认是不是连错 Neon 项目，并查看账号管理和备份方案。
 
-V2.5.5 的分级找回规则为：班级管理员联系所属年级管理员或超级管理员，年级管理员联系超级管理员。所有超级管理员密码均遗忘时，使用首次初始化最后一步保存的恢复密钥进入登录页恢复入口。数据库无法再次显示恢复密钥原文，不要通过删除生产数据库找回密码。
+分级找回规则为：班级管理员联系所属年级管理员或超级管理员，年级管理员联系超级管理员。所有超级管理员密码均遗忘时，使用首次初始化最后一步保存的恢复密钥进入登录页恢复入口。数据库无法再次显示恢复密钥原文，不要通过删除生产数据库找回密码。
 
 ## 8. 首页没有“开始初始化”
 
@@ -172,6 +206,53 @@ V2.5.5 的分级找回规则为：班级管理员联系所属年级管理员或�
 7. 必要时清除站点缓存后重试。
 
 清除站点数据可能移除当前设备班级和显示偏好，操作前记录本机绑定情况。
+
+## 13. 本地部署：内网其他设备打不开 **(本地)**
+
+本机能访问 `http://localhost:3000` 但其他设备打不开时：
+
+1. 访问地址要用**服务器的局域网 IP**（例如 `http://192.168.1.10:3000`），不能用 `localhost` 或 `127.0.0.1`；
+2. 确认应用监听的是 `0.0.0.0` 而不是仅回环地址（默认配置已满足）；
+3. 放行防火墙端口：
+
+```bash
+# Linux (ufw)
+sudo ufw allow 3000/tcp
+
+# Linux (firewalld)
+sudo firewall-cmd --add-port=3000/tcp --permanent && sudo firewall-cmd --reload
+```
+
+4. 确认与目标设备在同一网段，跨 VLAN 时需要放行路由；
+5. 确认服务器 IP 固定，DHCP 续约换地址会导致原来的收藏失效。
+
+## 14. 本地部署：反向代理后接口被拒绝 **(本地)**
+
+页面能打开但登录或保存失败，通常是转发头缺失：
+
+```nginx
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-Host $host;
+proxy_set_header X-Forwarded-Proto $scheme;
+```
+
+三项都要有。只设置 `Host` 而缺少 `X-Forwarded-Host` / `X-Forwarded-Proto` 时，同源校验会失败。修改后重载 Nginx 并重新测试。
+
+## 15. 本地部署：更新后容器起不来 **(本地)**
+
+```bash
+sudo docker compose logs --tail=200 app
+sudo docker compose ps
+```
+
+常见原因：
+
+- 新的环境变量没有同步到 `.env`；
+- 磁盘空间不足导致构建失败；
+- 端口被占用（`docker compose ps` 显示端口绑定冲突）；
+- 数据库迁移失败——此时不要反复重启，先备份再用旧镜像回滚。
+
+回滚方式见[更新与维护](/guide/local/06-maintenance#更新失败时回滚)。
 
 ## 仍无法解决
 
