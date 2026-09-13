@@ -63,7 +63,7 @@
 
 V2.8.0 把「能发布考试」升级为「能管理考试」：每场考试都有独立记录，带状态、时间线和操作历史。
 
-![考试记录列表](/pictures/exam-records-list.png)
+<!-- ![考试记录列表](/pictures/exam-records-list.png) -->
 
 ### 考试列表
 

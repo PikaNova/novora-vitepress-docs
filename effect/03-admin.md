@@ -4,4 +4,4 @@
 
 V2.8.0 把导航改到左侧边栏、页面控件集中到顶部上下文栏，并把总览重做为「核心状态卡片 + 运行健康区 + 待办入口」三段式。
 
-![后台-运行总览](/pictures/admin-dashboard-v280.png)
+<!-- ![后台-运行总览](/pictures/admin-dashboard-v280.png) -->
