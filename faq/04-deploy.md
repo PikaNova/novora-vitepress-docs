@@ -55,6 +55,17 @@ sudo docker compose up -d --build
 
 真正会丢数据的操作只有 `docker compose down -v`（删除数据卷）、手工删除数据库，以及「系统设置 → 数据维护」中的重置。执行这些操作前必须先备份。
 
+## 升级后接口 404，或提示函数数量超限
+
+V2.8.0 起 `api/` 目录的内部结构和 `vercel.json` 的函数配置都变了。这类报错几乎都是
+**只同步了一部分文件**造成的：
+
+1. 回到 GitHub，对 Fork 再执行一次完整同步（本地部署用 `git pull` 拉全量）；
+2. 确认 `api/` 目录下的 `_` 前缀私有目录也在，`vercel.json` 是同一次提交的版本；
+3. 重新部署后再试一次接口。
+
+详见[配置 Vercel 项目 · 函数数量与目录结构](/guide/vercel/03-vercel)。
+
 ## 更新失败了怎么回滚
 
 **云端**：在 Vercel **Deployments** 中找到更新前已验证成功的部署，用 Promote、Rollback 或重新部署功能恢复。

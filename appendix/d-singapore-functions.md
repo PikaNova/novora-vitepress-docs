@@ -23,6 +23,12 @@ Novora 的 Functions 需要频繁访问 Neon。Neon 使用 AWS Singapore 时，F
 
 提交并推送后创建新部署。Vercel 会让新的 Serverless Functions 在 `sin1` 运行。仓库配置可随源码版本保留，适合长期维护。
 
+::: tip V2.8.0 起 vercel.json 还包含函数配置
+除了 `regions`，`vercel.json` 现在还声明了函数相关配置，配合 `api/` 目录里 `_` 前缀的私有模块，
+把入口数量控制在免费版上限以内。因此升级时请**整目录同步**（Sync fork 或 `git pull`），
+只替换单个文件容易出现「构建通过但接口 404」或函数数量超限。
+:::
+
 ## 方法二：在 Vercel 控制台设置
 
 1. 登录 [Vercel Dashboard](https://vercel.com/dashboard)。

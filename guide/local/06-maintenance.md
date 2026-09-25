@@ -106,6 +106,25 @@ pg_restore --dbname="生产连接串" --clean --no-owner novora-YYYY-MM-DD.dump
 
 恢复前先在一套独立数据库上演练，确认管理员登录、学校结构和考试数据完整。
 
+## 记录表维护脚本（V2.8.0）
+
+两个一次性脚本，平时不需要跑。执行前先**备份数据库**，并避开考试和上课时段；
+脚本读取环境里的 `DATABASE_URL`，在项目目录里执行。
+
+```bash
+# 1. 旧考试的记录缺少时间窗与时间戳时回填
+npm run backfill:record-timestamps
+
+# 2. 清理「快照已删除、记录表还留着」的孤儿记录
+npm run purge:orphan-records                              # 只统计，不删除
+npm run purge:orphan-records -- --yes                     # 确认后真的删除
+npm run purge:orphan-records -- --yes --with-operations   # 连带删除这些考试的操作日志
+```
+
+Docker 部署时，在宿主机项目目录执行即可；容器内的数据库服务不会因此重启。
+孤儿记录在界面上看不到（列表按快照过滤），但会一直累积，建议每学期清理一次。
+默认不动 `exam_record_operations`：那是审计与操作历史，留着比删掉安全。
+
 ## 数据备份
 
 ### Docker 方式

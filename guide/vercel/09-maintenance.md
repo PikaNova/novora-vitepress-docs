@@ -55,6 +55,13 @@ Deploy Hook、Redeploy 和 Vercel 的重新构建都不会下载作者仓库的�
 
 如果 GitHub 提示冲突，不要点击丢弃自定义提交。应先建立测试分支处理冲突，或联系维护人员。同步完成后，Fork 的 `main` 才包含新版代码。
 
+::: warning 必须整目录同步
+V2.8.0 起，`api/` 目录的内部结构有调整（为了适配 Vercel 的函数数量上限，
+入口合并、私有模块移到 `_` 前缀目录），`vercel.json` 也增加了函数配置。
+升级时请用 Sync fork 或 `git pull` 整目录更新，**不要只复制个别文件**，
+否则会出现「构建通过但接口 404」或函数数量超限。
+:::
+
 ## 第四步：确认版本和同步结果
 
 1. 使用有部署权限的超级管理员登录。
@@ -147,6 +154,25 @@ pg_restore --dbname="测试数据库连接串" --no-owner --no-privileges novora
 - 通知正在使用系统的人员；
 - 避免多名管理员同时操作；
 - 完成后重新验收设备绑定和调度。
+
+### 记录表维护脚本（V2.8.0）
+
+两个一次性脚本，平时不需要跑。执行前先**备份数据库**，并在没有考试和上课的时段进行；
+脚本读取环境里的 `DATABASE_URL`，在项目目录里执行。
+
+```bash
+# 1. 旧考试的记录缺少时间窗与时间戳时回填
+npm run backfill:record-timestamps
+
+# 2. 清理「快照已删除、记录表还留着」的孤儿记录
+npm run purge:orphan-records                              # 只统计，不删除
+npm run purge:orphan-records -- --yes                     # 确认后真的删除
+npm run purge:orphan-records -- --yes --with-operations   # 连带删除这些考试的操作日志
+```
+
+- 孤儿记录在界面上看不到（列表按快照过滤），但会一直累积，建议每学期清理一次；
+- 默认不动 `exam_record_operations`：那是审计与操作历史，留着比删掉安全；
+- 判断口径与 `GET /api/exams?resource=record-consistency` 返回的 `orphaned` 一致。
 
 ## 查看日志
 

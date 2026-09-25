@@ -4,7 +4,7 @@
 
 - **快速开始**：五分钟上手部署 + 部署完的第一个小时 + 开发者入门 + 术语表
 - **部署主线**：开始之前 4 篇 + Vercel 云端 9 篇 + 本地/内网 6 篇 + 迁移与网络 3 篇
-- **功能使用**：功能总览 + 六个模块 + 10 篇操作与专题
+- **功能使用**：新功能速览 + 功能总览 + 六个模块 + 10 篇操作与专题
 - **管理员手册**：4 个角色 + 学期清单 + 主题 + 教室设备运维
 - **常见问题**：快问快答 + 5 篇主题 FAQ
 - **集成与 API**：ClassIsland 插件 4 篇 + 考试数据接口
@@ -17,6 +17,7 @@
 **官方问题反馈与部署交流群：`1067566386`**
 
 - [选择部署方式](./guide/00-deploy-paths.md)
+- [V2.8.0 新功能速览](./features/00-whats-new.md)
 - [创建 Vercel Deploy Hook 并填写环境变量](./guide/vercel/04-environment.md#创建-deploy-hook正式部署必做)
 - [Vercel 日常维护与回滚](./guide/vercel/09-maintenance.md)
 - [本地更新与维护](./guide/local/06-maintenance.md)

@@ -69,5 +69,5 @@ PDF 底部左侧为「Novora · 考试管理与教室大屏」品牌区，右侧
 ## 相关
 
 - 系统设置说明：[其他功能 · 系统设置](/features/10-other-features#系统设置)
-- 大屏设计说明：[其他功能 · 教室大屏设计](/features/10-other-features#13-套考试大屏设计)
+- 大屏设计说明：[其他功能 · 教室大屏设计](/features/10-other-features#教室大屏设计)
 - 班级与本机设置：[其他功能 · 班级选择和本地设置](/features/10-other-features#班级选择和本地设置)

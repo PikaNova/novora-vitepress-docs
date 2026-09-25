@@ -7,19 +7,11 @@ export default defineConfig({
   sitemap: { hostname: 'https://docs.pikachu2026.space' },
   cleanUrls: true,
   lastUpdated: true,
-  // 页面迁移后保留旧地址，已收藏的链接和搜索引擎收录不会失效。
-  rewrites: {
-    'guide/vercel/01-source-code.md': 'guide/04-source-code.md',
-    'guide/vercel/02-neon.md': 'guide/05-neon.md',
-    'guide/vercel/03-vercel.md': 'guide/06-vercel.md',
-    'guide/vercel/04-environment.md': 'guide/07-environment.md',
-    'guide/vercel/05-first-deploy.md': 'guide/08-first-deploy.md',
-    'guide/vercel/06-initialization.md': 'guide/09-initialization.md',
-    'guide/vercel/07-acceptance.md': 'guide/10-acceptance.md',
-    'guide/vercel/08-production.md': 'guide/11-production.md',
-    'guide/vercel/09-maintenance.md': 'guide/12-maintenance.md',
-    'appendix/d-singapore-functions.md': 'appendix/f-singapore-functions.md'
-  },
+  // 注意：这里不再使用 rewrites。
+  // VitePress 的 rewrites 是「源文件 → 输出路径」一对一映射，之前把
+  // guide/vercel/*.md 映射到 guide/04-source-code 等旧路径，结果新路径（侧边栏和正文使用的地址）
+  // 反而 404，旧路径才有内容。保留旧地址改用下面的跳转页实现：
+  //   guide/04-source-code.md … guide/12-maintenance.md、appendix/f-singapore-functions.md
   head: [
     ['link', { rel: 'icon', href: '/icon-192.png' }],
     ['meta', { name: 'theme-color', content: '#b42318' }]
@@ -36,6 +28,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '快速开始', link: '/start/' },
+      { text: '新功能', link: '/features/00-whats-new' },
       { text: '效果预览', link: '/effect/01-index' },
       { text: '部署', link: '/guide/00-deploy-paths' },
       { text: '功能使用', link: '/features/01-feature-overview' },
@@ -142,6 +135,7 @@ export default defineConfig({
         text: '功能使用',
         collapsed: false,
         items: [
+          { text: 'V2.8.0 新功能速览', link: '/features/00-whats-new' },
           { text: '功能总览', link: '/features/01-feature-overview' },
           { text: '1. 运行总览', link: '/features/02-overview-module' },
           { text: '2. 大型考试', link: '/features/03-major-module' },
