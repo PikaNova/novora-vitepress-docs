@@ -1,10 +1,36 @@
 import { defineConfig } from 'vitepress'
 
+/** 只保留旧地址用的「页面已迁移」跳转页，以及 404 页：都不该进站点地图。 */
+const SKIP_IN_SITEMAP = new Set([
+  '404',
+  'guide/04-source-code',
+  'guide/05-neon',
+  'guide/06-vercel',
+  'guide/07-environment',
+  'guide/08-first-deploy',
+  'guide/09-initialization',
+  'guide/10-acceptance',
+  'guide/11-production',
+  'guide/12-maintenance',
+  'appendix/f-singapore-functions',
+])
+
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
   description: 'Novora 从零部署、功能使用、管理员手册与维护指南（当前版本 V2.8.0）',
-  sitemap: { hostname: 'https://docs.pikachu2026.space' },
+  // README 是仓库说明（面向改文档的人），不当作读者页面发布。
+  srcExclude: ['README.md'],
+  sitemap: {
+    hostname: 'https://docs.pikachu2026.space',
+    // 站点地图只放真正的正文页：404 与「页面已迁移」的跳转页会被搜索引擎当成薄内容收录。
+    // 注意 items 里的 url 是相对路径（如 "404"、"guide/vercel/01-source-code"）。
+    transformItems: (items) =>
+      items.flat(Infinity).filter((item) => {
+        const url = String(item && item.url);
+        return !SKIP_IN_SITEMAP.has(url.replace(/\/$/, ''));
+      }),
+  },
   cleanUrls: true,
   lastUpdated: true,
   // 注意：这里不再使用 rewrites。

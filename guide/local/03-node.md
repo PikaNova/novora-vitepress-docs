@@ -10,7 +10,7 @@
 
 | 组件 | 版本要求 | 检查命令 |
 | --- | --- | --- |
-| Node.js | 22 或更高 | `node --version` |
+| Node.js | 24（项目声明 `24.x`） | `node --version` |
 | npm | 随 Node 附带 | `npm --version` |
 | PostgreSQL | 14 或更高 | `psql --version` |
 

@@ -14,7 +14,7 @@
 ## 环境准备
 
 - Git
-- Node.js 22 或更高
+- Node.js 24（项目声明 `24.x`）
 - npm
 - 可选：Vercel CLI（调试云端部署）
 - 可选：Docker（跑本地全套环境）

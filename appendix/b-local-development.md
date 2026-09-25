@@ -7,7 +7,7 @@
 推荐安装：
 
 - Git；
-- Node.js 22 或更高；
+- Node.js 24（项目的 `engines` 声明为 `24.x`，Docker 镜像同样使用 Node 24）；
 - npm；
 - VS Code 或其他编辑器；
 - 可选：Vercel CLI（调试云端部署时）；

@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | 账号 | GitHub、Vercel、Neon 三个账号 | 无平台账号要求 |
 | 主机 | 不需要 | 一台可长期开机的电脑或服务器，规划固定局域网 IP |
-| 运行环境 | 无需安装，Vercel 负责构建 | Docker + Docker Compose，或 Node.js 22+ 与本机 PostgreSQL |
+| 运行环境 | 无需安装，Vercel 负责构建 | Docker + Docker Compose，或 Node.js 24 与本机 PostgreSQL |
 | 命令行 | 不需要 | 需要能复制粘贴教程命令 |
 | 域名 | 可选，但中国大陆使用时强烈建议 | 可选；仅在需要公网或域名访问时配置 |
 | 邮件 | 准备可收信邮箱 | 同左 |

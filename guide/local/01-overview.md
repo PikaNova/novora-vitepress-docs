@@ -7,7 +7,7 @@
 | 对比项 | 方式一：Docker Compose | 方式二：无 Docker（Node） |
 | --- | --- | --- |
 | 数据库 | Compose 内嵌 PostgreSQL 16 容器 | 本机或内网 PostgreSQL 14+ |
-| 需要安装 | Docker + Docker Compose | Node.js 22+ 与 PostgreSQL |
+| 需要安装 | Docker + Docker Compose | Node.js 24 与 PostgreSQL |
 | 启动命令 | `docker compose up -d --build` | `npm install && npm run serve` |
 | 数据持久化 | Docker 卷 `novora_pgdata` | PostgreSQL 数据目录 |
 | 升级方式 | `git pull` + `docker compose up -d --build` | `npm run update:local` |
@@ -36,7 +36,7 @@ docker compose version
 **方式二**
 
 ```bash
-node --version    # 需要 v22 或更高
+node --version    # 需要 v24（项目声明 24.x）
 psql --version    # 需要 PostgreSQL 14 或更高
 ```
 
