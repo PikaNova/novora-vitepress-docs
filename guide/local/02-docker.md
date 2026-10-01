@@ -1,6 +1,6 @@
 # 2. Docker Compose 部署
 
-本篇用 Docker Compose 同时启动 Novora 应用和内嵌 PostgreSQL 16。启动完成后，应用和数据库都在容器里，删除容器不会丢失数据（数据保存在 Docker 卷）。
+Docker Compose 会同时启动 Novora 和 PostgreSQL 16。数据库数据保存在 Docker 卷中，删除容器不会删除数据。
 
 ::: tip 完全离线可用
 只有首次 `git clone` 和 `docker compose up --build` 需要联网。之后即使服务器不能访问外网，排考、大屏和管理后台仍然正常工作。

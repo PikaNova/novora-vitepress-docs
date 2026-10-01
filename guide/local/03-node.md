@@ -1,6 +1,6 @@
 # 3. 无 Docker 部署（Node + PostgreSQL）
 
-本篇不依赖 Docker，直接用 Node.js 托管网页和接口，连接本机或内网的 PostgreSQL。适合已有 PostgreSQL、或需要频繁修改源码的场景。
+这条路线不使用 Docker，由 Node.js 托管网页和接口，并连接本机或内网的 PostgreSQL。适合已有 PostgreSQL 或需要频繁修改源码的环境。
 
 ::: tip 新手建议
 如果只是想尽快用起来，直接选 [Docker Compose 部署](/guide/local/02-docker) 更省事：数据库、依赖、端口都在一套容器里，升级也不用管系统环境。

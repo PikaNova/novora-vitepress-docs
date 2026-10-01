@@ -1,6 +1,6 @@
 # 3. 部署前准备
 
-这一章只做准备，不会修改学校数据。这里列出的内容**两条主线都适用**；Vercel 专属的账号注册、Neon 区域要求、Deploy Hook 放到 [Vercel 主线](/guide/vercel/01-source-code)，本地专属的主机规格、Docker 与 Node 安装放到[本地主线](/guide/local/01-overview)。
+这一步只检查资料和环境，不会修改学校数据。下面的准备事项适用于两条主线；Vercel、Neon 和 Deploy Hook 的要求写在 [Vercel 主线](/guide/vercel/01-source-code)，主机、Docker 和 Node 的要求写在[本地主线](/guide/local/01-overview)。
 
 准备一个能正常接收验证邮件的邮箱，用于注册账号或接收系统通知。
 

@@ -1,6 +1,6 @@
 # 考试数据接口
 
-本篇面向把考试数据接到自研班牌、电子屏或校园系统的开发者。如果你只是想让教室自动提醒考试，直接用 [ClassIsland 插件](/integrations/classisland/01-overview) 更省事。
+这页面向把考试数据接入班牌、电子屏或校园系统的开发者。只需要教室自动提醒时，使用 [ClassIsland 插件](/integrations/classisland/01-overview)。
 
 ## 认证方式
 

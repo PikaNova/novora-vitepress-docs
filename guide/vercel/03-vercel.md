@@ -1,6 +1,6 @@
 # 3. 从 Fork 创建 Vercel 项目
 
-本篇只从第 1 篇创建的 Fork 导入项目。开始前应已完成 Neon 数据库创建，并准备好 Pooled connection string 和管理员初始密码。恢复密钥会在初始化时自动生成。
+本页从第 1 篇创建的 Fork 导入项目。开始前准备好 Neon 的 Pooled connection string 和管理员初始密码；恢复密钥会在初始化时生成。
 
 ## 新建项目
 

@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: Novora
-  text: 从零部署与维护指南
-  tagline: 面向零基础用户，从注册账号、创建数据库到正式上线，一步一步完成部署。
+  text: Novora 部署与使用文档
+  tagline: 从部署、初始化到考试安排、设备管理和日常维护，按实际操作查找步骤。
   image:
     src: /icon-192.png
     alt: Novora
@@ -28,8 +28,8 @@ features:
     details: 每一步说明点击位置、填写内容、成功标志和常见错误。
   - title: 管理员手册
     details: 按超级管理员、年级管理员、班级管理员、班级访客分工，附学期切换清单。
-  - title: 可持续维护
-    details: 包含六个模块、考试记录管理、更新、备份、诊断日志和回滚说明。
+  - title: 日常维护
+    details: 覆盖考试记录、更新、备份、诊断日志和回滚。
 ---
 
 ## 官方交流群
@@ -37,7 +37,7 @@ features:
 > **群号：`1067566386`**<br>
 > 面向 Novora 部署、初始化和日常使用答疑。反馈故障时请提供页面错误和 Request ID，敏感环境变量必须打码。
 
-## 六步简易部署
+## Vercel 云端部署
 
 1. 在 GitHub Fork [PikaNova/Novora](https://github.com/PikaNova/Novora)，保留自己的 Fork `main` 分支。
 2. 在 Neon 创建 AWS Singapore 数据库并复制 Pooled connection string。
@@ -52,7 +52,7 @@ Hook 只有 Vercel 项目创建后才能生成，所以需要在首次部署后�
 
 ## 推荐阅读方式
 
-**想尽快跑起来**：直接看[五分钟上手部署](/start/01-quick-deploy)，再按[部署完的第一个小时](/start/02-first-hour)把系统配置成能用的状态。
+**想尽快跑起来**：看[快速部署](/start/01-quick-deploy)，再按[部署后的检查清单](/start/02-first-hour)完成初始化和验收。
 
 **第一次部署、想看详细步骤**：先看[选择部署方式](/guide/00-deploy-paths)确定走 Vercel 云端还是本地/内网，再按对应主线连续阅读。Vercel 主线 9 篇，本地主线 6 篇。
 

@@ -1,6 +1,6 @@
 # D. 将 Vercel Functions 迁移到新加坡
 
-Novora 的 Functions 需要频繁访问 Neon。Neon 使用 AWS Singapore 时，Functions 也放在新加坡 `sin1`，可以避免每次 API 请求跨洲访问数据库。
+Novora 的 Functions 需要频繁访问 Neon。Neon 使用 AWS Singapore 时，把 Functions 也放在 `sin1`，可以减少 API 请求的跨洲访问。
 
 ## 迁移前确认
 

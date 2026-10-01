@@ -1,6 +1,6 @@
 # 更新日志
 
-本页按版本整理近期更新内容，每个版本独立成篇。当前版本为 **V2.8.0**，更早的完整记录请查看 [GitHub Releases](https://github.com/PikaNova/Novora/releases)。
+这里按版本列出近期更新。当前版本为 **V2.8.0**，更早的完整记录见 [GitHub Releases](https://github.com/PikaNova/Novora/releases)。
 
 ## 当前版本
 

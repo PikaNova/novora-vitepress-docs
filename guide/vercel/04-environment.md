@@ -1,6 +1,6 @@
 # 4. 配置环境变量
 
-环境变量是在 Vercel 中保存的部署配置。敏感值不会出现在浏览器源码中，也不应写入 GitHub。
+环境变量是 Vercel 保存的部署配置。敏感值不会出现在浏览器源码中，也不要写入 GitHub。
 
 从自己的 Fork 创建 Vercel 项目时，首次必须填写 `DATABASE_URL` 和 `ADMIN_PASSWORD`。项目创建后还必须生成 Deploy Hook，并补充 `VERCEL_DEPLOY_HOOK_URL`。
 

@@ -1,6 +1,6 @@
 # 1. 获取项目源码（Fork）
 
-Novora 的 Vercel 部署统一使用自己的 Fork 仓库，再由 Vercel 导入这个 Fork 创建项目。这样可以保留清晰、可持续的上游同步流程，后续能可靠获取作者仓库更新。
+Vercel 部署使用你自己的 Fork。Vercel 从这个仓库构建，后续更新也通过 Fork 同步作者仓库。
 
 本地/内网部署不需要 Fork，直接在服务器上 `git clone` 即可，见[本地部署总览](/guide/local/01-overview)。
 

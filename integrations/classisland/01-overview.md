@@ -1,6 +1,6 @@
 # 1. 插件总览
 
-Novora 的 ClassIsland「考试提醒」插件是可选集成。它会同步当前设备绑定班级的考试，并通过 ClassIsland 在开考前自动打开大屏、发送提醒。
+ClassIsland「考试提醒」插件会同步当前设备绑定班级的考试，并在开考前自动打开大屏和发送提醒。插件是可选集成。
 
 源码在 Novora 仓库的 `integrations/ClassIsland.ExamReminder`，也可从 [ClassIsland.ExamReminder 仓库](https://github.com/PikaNova/ClassIsland.ExamReminder) 获取。
 

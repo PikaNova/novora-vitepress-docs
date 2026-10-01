@@ -1,6 +1,6 @@
 # 常见问题速查
 
-这一栏回答「这样用对不对」类的问题。已经出现报错时，先看[错误信息对照表](/appendix/f-error-reference)，再进[故障排查](/appendix/a-troubleshooting)。
+这里回答使用过程中的常见疑问。已经出现报错时，先看[错误信息对照表](/appendix/f-error-reference)，再进[故障排查](/appendix/a-troubleshooting)。
 
 ## 按主题查找
 

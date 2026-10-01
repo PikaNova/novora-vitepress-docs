@@ -1,6 +1,6 @@
 # 项目快速入门（开发者）
 
-这一页给要改代码或参与开发的人。只部署不开发可以跳过。
+这页给需要修改源码、调试 API 或参与开发的人。只部署现成版本时，直接看部署主线。
 
 ## 技术栈
 
@@ -119,7 +119,7 @@ npm run test
 
 全部通过再提 PR。涉及数据库结构改动时，同时补充集成测试场景。
 
-## 相关文档
+## 继续阅读
 
 - 本地运行方式：[Docker Compose 部署](/guide/local/02-docker)｜[无 Docker 部署](/guide/local/03-node)
 - 插件接口：[ClassIsland 接口与兼容](/integrations/classisland/03-api)
