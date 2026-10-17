@@ -18,7 +18,7 @@ const SKIP_IN_SITEMAP = new Set([
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
-  description: 'Novora 从零部署、功能使用、管理员手册与维护指南（当前版本 V2.8.0）',
+  description: 'Novora 从零部署、功能使用、管理员手册与维护指南（当前版本 V2.8.1）',
   // README 是仓库说明（面向改文档的人），不当作读者页面发布。
   srcExclude: ['README.md'],
   sitemap: {
@@ -54,7 +54,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '快速开始', link: '/start/' },
-      { text: '新功能', link: '/features/00-whats-new' },
+      { text: '新功能', link: '/features/01-whats-new-2.8.1' },
       { text: '效果预览', link: '/effect/01-index' },
       { text: '部署', link: '/guide/00-deploy-paths' },
       { text: '功能使用', link: '/features/01-feature-overview' },
@@ -100,7 +100,8 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '更新日志', link: '/changelog' },
-          { text: 'V2.8.0（当前版本）', link: '/changelog/v2.8.0' },
+          { text: 'V2.8.1（当前版本）', link: '/changelog/v2.8.1' },
+          { text: 'V2.8.0', link: '/changelog/v2.8.0' },
           { text: 'V2.7.4 – V2.7.6', link: '/changelog/v2.7.4-v2.7.6' },
           { text: 'V2.7.3', link: '/changelog/v2.7.3' },
           { text: 'V2.7.2', link: '/changelog/v2.7.2' },
@@ -161,6 +162,7 @@ export default defineConfig({
         text: '功能使用',
         collapsed: false,
         items: [
+          { text: 'V2.8.1 新功能介绍', link: '/features/01-whats-new-2.8.1' },
           { text: 'V2.8.0 新功能速览', link: '/features/00-whats-new' },
           { text: '功能总览', link: '/features/01-feature-overview' },
           { text: '1. 运行总览', link: '/features/02-overview-module' },
@@ -247,7 +249,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.8.0 整理'
+      copyright: '内容基于 Novora V2.8.1 整理'
     },
     search: { provider: 'local' }
   }
