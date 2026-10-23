@@ -2,6 +2,10 @@
 
 本地/内网部署把网页、接口和数据库放在学校自己管理的机器上，不依赖 Vercel 或 Neon。它适合教室局域网、无外网数据库或要求数据留在校内的环境。
 
+::: tip 部署机器是 Windows
+如果不想安装 Docker 或 Node.js，可以直接使用自带运行环境的 [Windows 安装包](/guide/windows/01-control-center)。安装后在控制中心完成初始化、服务启停、软件更新、备份恢复和日志查看。
+:::
+
 ## 两种方式
 
 | 对比项 | 方式一：Docker Compose | 方式二：无 Docker（Node） |

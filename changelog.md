@@ -1,10 +1,11 @@
 # 更新日志
 
-这里按版本列出近期更新。当前版本为 **V2.8.1**，更早的完整记录见 [GitHub Releases](https://github.com/PikaNova/Novora/releases)。
+这里按版本列出近期更新。当前版本为 **V2.8.2**，更早的完整记录见 [GitHub Releases](https://github.com/PikaNova/Novora/releases)。
 
 ## 当前版本
 
-- [V2.8.1（当前版本）](/changelog/v2.8.1)——考试调度、校时与运行监控改进，含问题修复
+- [V2.8.2（当前版本）](/changelog/v2.8.2)——Windows 签名更新通道，含安装、初始化与局域网登录修复
+- [V2.8.1](/changelog/v2.8.1)——考试调度、校时与运行监控改进，含问题修复
 - [V2.8.1 新功能介绍](/features/01-whats-new-2.8.1)
 - [V2.8.0](/changelog/v2.8.0)——以 V2.7.3 为基线，含 V2.7.4–V2.7.6 三个修补批次
 - [V2.8.0 新功能速览](/features/00-whats-new)——按功能主题整理，适合第一次升级时快速了解

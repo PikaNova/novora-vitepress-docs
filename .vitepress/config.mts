@@ -100,7 +100,8 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '更新日志', link: '/changelog' },
-          { text: 'V2.8.1（当前版本）', link: '/changelog/v2.8.1' },
+          { text: 'V2.8.2（当前版本）', link: '/changelog/v2.8.2' },
+          { text: 'V2.8.1', link: '/changelog/v2.8.1' },
           { text: 'V2.8.0', link: '/changelog/v2.8.0' },
           { text: 'V2.7.4 – V2.7.6', link: '/changelog/v2.7.4-v2.7.6' },
           { text: 'V2.7.3', link: '/changelog/v2.7.3' },
@@ -147,6 +148,13 @@ export default defineConfig({
           { text: '4. 反向代理与 HTTPS', link: '/guide/local/04-reverse-proxy' },
           { text: '5. 初始化与验收', link: '/guide/local/05-acceptance' },
           { text: '6. 更新与维护', link: '/guide/local/06-maintenance' }
+        ]
+      },
+      {
+        text: '部署：Windows 安装包',
+        collapsed: false,
+        items: [
+          { text: 'Windows 控制中心：安装、使用与维护', link: '/guide/windows/01-control-center' }
         ]
       },
       {
@@ -249,7 +257,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.8.1 整理'
+      copyright: '内容基于 Novora V2.8.2 整理'
     },
     search: { provider: 'local' }
   }

@@ -6,7 +6,7 @@ Novora 支持 Vercel 云端和本地/内网两种部署。两者使用同一份�
 
 | 对比项 | Vercel 云端（默认推荐给新手） | 本地 / 内网 |
 | --- | --- | --- |
-| 网页与接口运行在 | Vercel Functions + Edge | 本机或局域网服务器（Docker 或 Node） |
+| 网页与接口运行在 | Vercel Functions + Edge | 本机或局域网服务器（Windows 安装包、Docker 或 Node） |
 | 数据库 | Neon 云端 PostgreSQL | 内嵌 PostgreSQL 16 或本机 PostgreSQL |
 | 是否需要购买或长期开机一台服务器 | 不需要 | 需要 |
 | 公网访问 | 默认支持，可绑定自定义域名 | 内网直接访问；公网需反向代理 + HTTPS |
@@ -30,6 +30,16 @@ Novora 支持 Vercel 云端和本地/内网两种部署。两者使用同一份�
 - 已有可以长期开机的服务器、NAS 或机房主机。
 
 两种方式可以同时存在：同一份源码，部署两套实例，互不影响。
+
+## 本地服务器是 Windows 时
+
+如果部署机器是 Windows，并且不希望安装 Docker、Node.js 和 PostgreSQL，可以直接使用 Novora Windows 安装包。它自带运行环境，安装后在控制中心完成初始化、服务启停、软件更新、备份恢复和日志查看。
+
+- 服务器需要 Windows 10 1607 / Server 2016 或更高版本、x64；
+- 安装和修改 Windows 设置需要管理员权限，日常查看状态不需要；
+- 数据库、服务和防火墙只在本机与本地子网内工作，公网访问仍需反向代理和 HTTPS。
+
+详细步骤见 [Windows 控制中心：安装、使用与维护](/guide/windows/01-control-center)。
 
 ## 两条主线的内容边界
 
