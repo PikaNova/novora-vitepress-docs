@@ -18,7 +18,7 @@ const SKIP_IN_SITEMAP = new Set([
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Novora 部署文档',
-  description: 'Novora 从零部署、功能使用、管理员手册与维护指南（当前版本 V2.8.1）',
+  description: 'Novora 从零部署、功能使用、管理员手册与维护指南（当前版本 V2.8.3）',
   // README 是仓库说明（面向改文档的人），不当作读者页面发布。
   srcExclude: ['README.md'],
   sitemap: {
@@ -100,7 +100,8 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '更新日志', link: '/changelog' },
-          { text: 'V2.8.2（当前版本）', link: '/changelog/v2.8.2' },
+          { text: 'V2.8.3（当前版本）', link: '/changelog/v2.8.3' },
+          { text: 'V2.8.2', link: '/changelog/v2.8.2' },
           { text: 'V2.8.1', link: '/changelog/v2.8.1' },
           { text: 'V2.8.0', link: '/changelog/v2.8.0' },
           { text: 'V2.7.4 – V2.7.6', link: '/changelog/v2.7.4-v2.7.6' },
@@ -257,7 +258,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Novora 部署与维护文档',
-      copyright: '内容基于 Novora V2.8.2 整理'
+      copyright: '内容基于 Novora V2.8.3 整理'
     },
     search: { provider: 'local' }
   }
